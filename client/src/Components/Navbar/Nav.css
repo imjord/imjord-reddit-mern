@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1a1a1b;   
+    padding: 5px;
+}
+
+#icon {
+    color: red;
+    font-size: 30px;
+
+}
+
+
+.nav-btn-div {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.nav button {
+    
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.searchbar {
+    font-size: 30px;
+    position: relative;
+}
+.searchbar input{
+    background-color: #272729;
+    padding-left: 40px;
+    font-size: 40px;
+    margin-bottom: 5px;
+    border-radius: 30px;
+    border: none;
+    color: white;
+}
+
+.mysearchicon {
+    left: 10px;
+    top: 25px;
+    margin-top: -20px;
+    position: absolute;
+    color: gray;
+}
+
+.inner-nav-btn {
+    padding: 5px 10px 5px 10px;
+    color: #757778;
+}
+
+#btn-1 {
+    background-color: black;
+    color: white;
+    padding-right: 25px;
+    padding-left: 25px;
+    border: 1px solid white;
+}
+
+#btn-2 {
+    background-color: white;
+    color: black;
+    padding-right: 25px;
+    padding-left: 25px;
+    border: 1px solid black;
+}
+
+
+.dropdown {
+    padding: 5px;
+}
+
+/* hovers */
+
+#btn-1:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#btn-2:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
+.dropdown:hover {
+    border: 0.5px solid black;
+    cursor: pointer;
+}
