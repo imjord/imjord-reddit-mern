@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const Comment = require('../models/Comment');
 
 
 
@@ -7,7 +8,7 @@ const PostController = {
     // get posts method 
     GetPosts(req,res){
         
-        Post.find().then(results => {
+        Post.find().populate("comments").then(results => {
             res.json(results)
         }).catch(err => {
             console.log(err)
