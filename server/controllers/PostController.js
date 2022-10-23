@@ -14,6 +14,14 @@ const PostController = {
             console.log(err)
         })
     },
+    // get a post by id 
+    GetPostDetails(req,res) {
+        Post.findById({_id: req.params.id}).populate("comments").then(results => {
+            res.json(results)
+        }).catch(err => {
+            console.log(err)
+        })
+    },
     // make a post 
     CreatePost(req,res){
         const newPost = new Post({

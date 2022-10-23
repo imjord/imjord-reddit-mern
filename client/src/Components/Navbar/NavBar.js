@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import SearchBar from '../SearchBar/SearchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFireFlameCurved, faUser, faCaretDown} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faCaretDown, faRobot} from '@fortawesome/free-solid-svg-icons'
 
 
 import './Nav.css';
@@ -19,7 +19,7 @@ const NavBar = () => {
     <nav className='nav'>
      
         <div>
-        <FontAwesomeIcon icon={faFireFlameCurved} id="icon" />
+        <FontAwesomeIcon icon={faRobot} id="icon" />
         </div>
         <SearchBar />
           <div className='nav-btn-div'>

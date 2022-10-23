@@ -1,16 +1,27 @@
 import React from 'react'
 import './Post.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUpLong, faDownLong, faComments, faShare} from '@fortawesome/free-solid-svg-icons'
+
 
 const Post = (props) => {
  const {posts } = props;
   return (
-      <div>
+      <div className='post-component'>
 {posts.data?.map((item) => {
         return(
+          <div className='post-container'>
+            <div className='votes-container'>
+                    <FontAwesomeIcon id='post-icons' icon={faUpLong} />
+                    <p>{item.upvotes.length}</p>
+                    <FontAwesomeIcon icon={faDownLong} />
+              </div>
           <div className='post'>
-            <div> <span>r/item.community</span><span>posted by u/imjord</span> </div>
+                  
+            <div> <span>r/{item.community}   </span><span className='user-color'>posted by u/{item.user}  </span> </div>
           <div> <h3>{item.title} </h3> </div>
-          <div> 6.3k Comments   Share ...</div>
+          <div id='post-icons'><FontAwesomeIcon id='post-icons' icon={faComments} /> {item.comments.length} Comments  <FontAwesomeIcon id='post-icons' icon={faShare} />  Share ...</div>
+          </div>
           </div>
         )
         

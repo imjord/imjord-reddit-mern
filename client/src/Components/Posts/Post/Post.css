@@ -1,11 +1,39 @@
 .post {
-    border: 2px solid black;
-    padding: 5px;
-    margin: 5px;
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     height: 100px;
+    padding: 5px;
     border-radius: 5px;
+}
+
+.post-component {
+    width: 100%;
+}
+
+.post-container {
+    display: flex;
+    margin: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid #1a1a1b;
+    background-color: #1a1a1b;
+    color: #d7dadc;
+}
+
+.votes-container {
+    background-color: #161617;
+    margin: 0;
+    padding: 0;
+    width: 5%;
+
+}
+
+.user-color {
+    color: #696b6b;
+}
+
+#post-icons {
+    color: #616263;
 }
