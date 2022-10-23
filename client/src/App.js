@@ -4,6 +4,8 @@ import NavBar from './Components/Navbar/NavBar';
 import Posts from './Components/Posts/Posts';
 import TrendingBar from './Components/TrendingBar/TrendingBar';
 import './App.css' 
+import {BrowserRouter} from 'react-router-dom';
+
 import axios from "axios";
 function App() {
   const [posts, setPosts] = useState([{}]);
@@ -13,6 +15,10 @@ function App() {
     setPosts(res);   
   }
 
+  const GetPostDetails = async (id) => {
+    const res = await axios.get('')
+  }
+
 
   useEffect(() => {
     GetPosts();
@@ -20,14 +26,15 @@ function App() {
 
 
   return (
-    <>
+    <> 
     <NavBar />
-    <TrendingBar />
     <main>
+      <TrendingBar />
       <Filter />
       <Posts posts={posts} />
     </main>
     </>
+   
   );
 }
 
