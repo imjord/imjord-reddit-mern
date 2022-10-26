@@ -102,3 +102,33 @@
     border: 0.5px solid black;
     cursor: pointer;
 }
+
+
+/* modal */
+
+.registration-modal-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 600px;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.inner-div-modal {
+    margin: 150px 15px 150px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#close-icon-modal {
+    float: right;
+    padding: 15px;
+    font-size: 30px;
+}
