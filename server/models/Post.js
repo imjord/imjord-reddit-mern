@@ -26,7 +26,7 @@ const PostSchema = new Schema({
         // type: Schema.Types.ObjectId,
         // ref: 'Community',
         type: String,
-        default: 'Poop Community'
+        default: 'Jord Community'
     },
     // array of comments for 1 post
     comments: [{

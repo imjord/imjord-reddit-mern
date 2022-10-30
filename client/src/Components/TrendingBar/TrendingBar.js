@@ -21,13 +21,13 @@ const TrendingBar = () => {
         <div className='trending-card-div'>
         <div className='trending-card'>
           
-            <div className='image-caption'>Kill me
-            <p>r/ depression and more</p></div>
+            <div className='image-caption'>say wat
+            <p>r/ doge and more</p></div>
           <img src={images.trending1.image} alt="trending image" />
           </div>
         <div className='trending-card'>
-        <div className='image-caption'>im sad
-        <p>r/ depression and more</p></div>
+        <div className='image-caption'>im sad today
+        <p>r/ doge and more</p></div>
 
         <img src={images.trending2.image} alt="trending image" />
 
