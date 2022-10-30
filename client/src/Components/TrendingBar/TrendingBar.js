@@ -26,7 +26,7 @@ const TrendingBar = () => {
           <img src={images.trending1.image} alt="trending image" />
           </div>
         <div className='trending-card'>
-        <div className='image-caption'>im sad today
+        <div className='image-caption'> YO
         <p>r/ doge and more</p></div>
 
         <img src={images.trending2.image} alt="trending image" />
