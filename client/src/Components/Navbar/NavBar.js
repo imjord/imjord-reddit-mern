@@ -61,26 +61,22 @@ const NavBar = () => {
             {sign ? <div className='registration-modal-container'>
               <div> <FontAwesomeIcon onClick={CloseModal} icon={faXmark} id="close-icon-modal" /></div>
               <div className='inner-div-modal'>
-                
-              <div>
+              <div className='modal-h1'>
               <h1>Sign Up</h1>
-                <p>We're all going to die</p>
+               
                 </div>
                
-                <div>
-                  <button> continue with google</button> 
-                  <button> continue with apple</button> 
+                <div className='modal-privacy'>
+                By continuing, you are setting up a Imjord Reddit account and agree to our User Agreement and Privacy Policy.
                 </div>
-                <div>
-                  <h3>OR</h3>
-                </div>
-                <div>
+                <div className='modal-form'>
                   <form>
                     <input placeholder='Email' for="email" name='email' type="email" />
-                    <button>Continue</button>
+                    
                   </form>
+                  <div className='button-div-modal'> <button>Continue</button> </div>
                 </div>
-                <div>
+                <div className='bottom-modal'>
                   <h5> Already have an account? <a href='#'>Log in </a></h5>
                 </div>
                  </div>
@@ -89,28 +85,23 @@ const NavBar = () => {
               {log ?  <div className='registration-modal-container'>
               <div> <FontAwesomeIcon onClick={CloseModal} icon={faXmark} id="close-icon-modal" /></div>
               <div className='inner-div-modal'>
-                
-              <div>
-              <h1>Login</h1>
-                <p>We're all going to die</p>
+              <div className='modal-h1'>
+              <h1>Log In</h1>
+               
                 </div>
                
-                <div>
-                  <button> continue with google</button> 
-                  <button> continue with apple</button> 
+                <div className='modal-privacy'>
+                By continuing, you are setting up a Imjord Reddit account and agree to our User Agreement and Privacy Policy.
                 </div>
-                <div>
-                  <h3>OR</h3>
-                </div>
-                <div>
+                <div className='modal-form'>
                   <form>
-                    <input placeholder='Email' htmlFor="email" name='email' type="email" />
-                    <input placeholder='Password' htmlFor="password" name='password' type="password" />
-                    <button>Login</button>
+                    <input placeholder='Email' for="email" name='email' type="email" />
+                    <input placeholder='password' for="password" name='password' type="password" />
                   </form>
+                  <div className='button-div-modal'> <button>Log In</button> </div>
                 </div>
-                <div>
-                  <h5> Dont have an account? <a href='#'>Sign up! </a></h5>
+                <div className='bottom-modal'>
+                  <h5> Not a user? <a href='#' >Sign up! </a></h5>
                 </div>
                  </div>
               

@@ -112,11 +112,13 @@
     flex-direction: column;
     position: fixed;
     height: 600px;
+    width: 500px;
     border-radius: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    z-index: 2;
+    
 }
 
 .inner-div-modal {
@@ -125,6 +127,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100px;
 }
 
 #close-icon-modal {
@@ -132,6 +135,74 @@
     padding: 15px;
     font-size: 30px;
 }
+
+/* modal contents style */
+
+
+.modal-h1 {
+    margin: 5px;
+    width: 100%;
+    padding: 5px;
+}
+
+.modal-privacy {
+    padding: 5px;
+
+
+}
+
+.modal-form {
+    margin: 50px;
+    width: 100%;    
+    
+}
+.modal-form form {
+    width: 60%;
+    
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form form input {
+    border-radius: 20px;
+    height: 40px;
+    border: 0;
+    margin: 10px;
+    padding: 15px;
+    background-color: whitesmoke;
+}
+
+.button-div-modal {
+    display: flex;
+
+}
+.modal-form button {
+    width: 50%;
+    border-radius: 20px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: #d93a00;
+    color: white;
+    border: 0;
+
+    
+}
+
+
+.bottom-modal {
+
+}
+
+
+
+
+
+
+
+
+
 
 
 /* dropdown container!  */
@@ -148,9 +219,7 @@
     padding: 15px;
 }
 
-.mode {
-    
-}
+
 .outside-circle-div {
     float: right;
     background-color: black;
