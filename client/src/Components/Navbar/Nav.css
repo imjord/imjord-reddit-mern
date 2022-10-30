@@ -99,7 +99,7 @@
 
 
 .dropdown:hover {
-    border: 0.5px solid black;
+
     cursor: pointer;
 }
 
@@ -131,4 +131,43 @@
     float: right;
     padding: 15px;
     font-size: 30px;
+}
+
+
+/* dropdown container!  */
+
+
+.dropdown-container {
+    color: white;
+    background-color: #1a1a1b;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 120px;
+    padding: 15px;
+}
+
+.mode {
+    
+}
+.outside-circle-div {
+    float: right;
+    background-color: black;
+    padding: 5px;
+    height: 5px;
+    border-radius: 25px;
+}
+
+.inside-circle-div {
+    background-color: green;
+    border: 2px solid white;
+    height: 20px;
+    width: 20px;
+    border-radius: 2px;
+    transform: scale(2, 0.5);
+}
+
+.inside-circle-div:hover  {
+    cursor: pointer;
 }

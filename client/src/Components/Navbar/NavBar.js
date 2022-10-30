@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import SearchBar from '../SearchBar/SearchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faCaretDown, faRobot, faXmark} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faScroll, faBullhorn, faDoorOpen} from '@fortawesome/free-solid-svg-icons'
 import SignUp from '../Registration/SignUp';
 
 import './Nav.css';
@@ -50,7 +50,14 @@ const NavBar = () => {
               </div>
               
             </div>
-            {isOpen ? <div>Opened!</div> : null}
+            {isOpen ? <div className='dropdown-container'>
+              <div className='mode'>  <FontAwesomeIcon icon={faMoon}  /> Dark Mode <div className='outside-circle-div'> <div className='inside-circle-div'> </div> </div> </div>
+              <div> <FontAwesomeIcon icon={faQuestion}/>  Help Center </div>
+              <div><FontAwesomeIcon icon={faScroll}/> Terms & Policies </div>
+              <div><FontAwesomeIcon icon={faBullhorn}/> Advertise On Reddit </div>
+              <hr/>
+              <div><FontAwesomeIcon icon={faDoorOpen}/> Login/SignUp </div>
+            </div> : null}
             {sign ? <div className='registration-modal-container'>
               <div> <FontAwesomeIcon onClick={CloseModal} icon={faXmark} id="close-icon-modal" /></div>
               <div className='inner-div-modal'>
