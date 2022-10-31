@@ -10,6 +10,7 @@ const PostController = {
         
         Post.find().populate("comments").then(results => {
             res.json(results)
+            console.log(req.session);
         }).catch(err => {
             console.log(err)
         })
