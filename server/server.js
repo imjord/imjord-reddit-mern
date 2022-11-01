@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3001;
 const CommentRoutes = require('./routes/CommentRoute');
 const PostRoutes = require('./routes/PostRoute');
+const UserRoutes = require('./routes/UserRoute.js');
 const mongoDB = require('./config/connection');
 const cors = require('cors');
 const session = require('express-session');
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 });
 app.use("/", PostRoutes)
 app.use('/', CommentRoutes);
+app.use('/', UserRoutes)
 
 // db and server
 mongoDB.once('open', () => {
