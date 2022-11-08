@@ -6,6 +6,7 @@ const UserController = {
     getUsers(req, res){
         User.find().then(response => {
             res.json(response);
+            console.log(req.session)
         }).catch(err => {
             console.log(err);
         });
@@ -18,8 +19,12 @@ const UserController = {
             password: req.body.password
         });
 
+       
+
         newUser.save().then(response => {
             res.json({message: "user created!"});
+            req.session.username = newUser.username;
+            console.log(req.session)
         }).catch(err => {
             console.log(err);
         });
