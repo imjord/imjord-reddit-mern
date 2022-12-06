@@ -2,13 +2,13 @@ import React from 'react'
 import './Post.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpLong, faDownLong, faComments, faShare} from '@fortawesome/free-solid-svg-icons'
-
+import Spinner from '../../Spinner/Spinner'
 
 const Post = (props) => {
- const {posts } = props;
+ const {posts, loading } = props;
   return (
       <div className='post-component'>
-{posts.data?.map((item) => {
+        {loading ? <Spinner /> : <div> {posts.data?.map((item) => {
         return(
           <div className='post-container'>
             <div className='votes-container'>
@@ -24,8 +24,9 @@ const Post = (props) => {
           </div>
           </div>
         )
-        
-      })}
+       
+      })}  </div>}
+
       </div>
       
   )

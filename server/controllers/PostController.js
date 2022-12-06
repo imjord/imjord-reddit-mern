@@ -25,11 +25,14 @@ const PostController = {
     },
     // make a post 
     CreatePost(req,res){
+
+        let errors = [];
         const newPost = new Post({
             title: req.body.title, 
             content: req.body.content
         })
-
+        
+    //   need validation 
         newPost.save().then(
             results => {
                 res.json({message: "Post created"});

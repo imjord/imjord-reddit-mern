@@ -4,11 +4,11 @@ import './Posts.css'
 
 const Posts = (props) => {
 
-  const {posts } = props;
+  const {posts, loading } = props;
 
   return (
     <div className='posts-div'>
-        <Post posts={posts}  />
+        <Post posts={posts} loading={loading} />
       
     </div>
   )
