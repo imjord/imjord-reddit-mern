@@ -1,0 +1,1 @@
+// auth routes for when going to user logged in areas 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import SearchBar from '../SearchBar/SearchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faScroll, faBullhorn, faDoorOpen} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faScroll, faBullhorn, faDoorOpen, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import SignUp from '../Registration/SignUp';
 
 import './Nav.css';
@@ -10,6 +10,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [sign, setSign] = useState(false);
   const [log, setLog] = useState(false);
+  const [continueSignup, setContinueSignup] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -24,6 +25,7 @@ const NavBar = () => {
   const CloseModal = () => {
     setLog(false);
     setSign(false);
+    setContinueSignup(false);
   }
 
   const LoginModal = () => {
@@ -74,10 +76,32 @@ const NavBar = () => {
                     <input placeholder='Email' for="email" name='email' type="email" />
                     
                   </form>
-                  <div className='button-div-modal'> <button>Continue</button> </div>
+                   <button className='button-div-modal' onClick={() => setContinueSignup(true)}>Continue</button> 
                 </div>
                 <div className='bottom-modal'>
                   <h5> Already have an account? <a href='#'>Log in </a></h5>
+                </div>
+                 </div>
+              
+               </div> : null}
+               {continueSignup ? <div className='registration-modal-container'>
+               <div> <FontAwesomeIcon onClick={() => setContinueSignup(false)} icon={faArrowLeft} id="back-icon-modal" /></div>
+              <div> <FontAwesomeIcon onClick={CloseModal} icon={faXmark} id="close-icon-modal" /></div>
+              <div className='inner-div-modal'>
+              <div className='modal-h1'>
+              <h2>Create your username and password</h2>
+               
+                </div>
+               
+                <div className='modal-privacy'>
+                Imjordreddit is anonymous, so your username is what you’ll go by here. Choose wisely—because once you get a name, you can’t change it.
+                </div>
+                <div className='modal-form'>
+                  <form>
+                    <input placeholder='Username' for="username" name='username' type="username" />
+                    <input placeholder='Password' for="password" name='password' type="password" />
+                  </form>
+                  <div className='button-div-modal'> <button>Continue</button> </div>
                 </div>
                  </div>
               
@@ -95,8 +119,8 @@ const NavBar = () => {
                 </div>
                 <div className='modal-form'>
                   <form>
-                    <input placeholder='Email' for="email" name='email' type="email" />
-                    <input placeholder='password' for="password" name='password' type="password" />
+                  <input placeholder='Username' for="username" name='username' type="username" />
+                    <input placeholder='Password' for="password" name='password' type="password" />
                   </form>
                   <div className='button-div-modal'> <button>Log In</button> </div>
                 </div>
