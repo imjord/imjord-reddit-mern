@@ -6,11 +6,15 @@ import SignUp from '../Registration/SignUp';
 
 import './Nav.css';
 
-const NavBar = () => {
+const NavBar = (props) => {
+  const {CreateUser} = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sign, setSign] = useState(false);
   const [log, setLog] = useState(false);
   const [continueSignup, setContinueSignup] = useState(false);
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -30,6 +34,11 @@ const NavBar = () => {
 
   const LoginModal = () => {
     setLog(true);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    CreateUser(email, username, password)
   }
 
   return (
@@ -73,7 +82,7 @@ const NavBar = () => {
                 </div>
                 <div className='modal-form'>
                   <form>
-                    <input placeholder='Email' for="email" name='email' type="email" />
+                    <input placeholder='Email' for="email" name='email' type="email" onChange={(e) => setEmail(e.target.value)} />
                     
                   </form>
                    <button className='button-div-modal' onClick={() => setContinueSignup(true)}>Continue</button> 
@@ -98,10 +107,11 @@ const NavBar = () => {
                 </div>
                 <div className='modal-form'>
                   <form>
-                    <input placeholder='Username' for="username" name='username' type="username" />
-                    <input placeholder='Password' for="password" name='password' type="password" />
+                    <input placeholder='Username' for="username" name='username' type="username" onChange={(e) => setUsername(e.target.value)} />
+                    <input placeholder='Password' for="password" name='password' type="password" onChange={(e) => setPassword(e.target.value)} />
+                    <div className='button-div-modal'> <button id='user-btn' type='submit' onClick={handleSubmit}>Continue</button> </div>
+
                   </form>
-                  <div className='button-div-modal'> <button>Continue</button> </div>
                 </div>
                  </div>
               

@@ -23,8 +23,6 @@ const UserController = {
 
         newUser.save().then(response => {
             res.json({message: "user created!"});
-            req.session.username = newUser.username;
-            console.log(req.session)
         }).catch(err => {
             console.log(err);
         });
