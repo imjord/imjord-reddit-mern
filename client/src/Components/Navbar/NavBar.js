@@ -3,11 +3,11 @@ import SearchBar from '../SearchBar/SearchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faScroll, faBullhorn, faDoorOpen, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import SignUp from '../Registration/SignUp';
-
+import Bubble from './Bubble-Background.svg';
 import './Nav.css';
 
 const NavBar = (props) => {
-  const {CreateUser} = props;
+  const {CreateUser, loggedIn, setLoggedIn} = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sign, setSign] = useState(false);
   const [log, setLog] = useState(false);
@@ -15,6 +15,7 @@ const NavBar = (props) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -30,6 +31,7 @@ const NavBar = (props) => {
     setLog(false);
     setSign(false);
     setContinueSignup(false);
+    setLoggedIn(false);
   }
 
   const LoginModal = () => {
@@ -40,6 +42,7 @@ const NavBar = (props) => {
     e.preventDefault();
     CreateUser(email, username, password)
   }
+
 
   return (
     <nav className='nav'>
@@ -116,6 +119,21 @@ const NavBar = (props) => {
                  </div>
               
                </div> : null}
+               {loggedIn ? 
+            
+               <div id='welcome' className='registration-modal-container'>
+              <div> <FontAwesomeIcon onClick={CloseModal} icon={faXmark} id="close-icon-modal" /></div>
+              <div className='inner-div-modal'>
+              <div className='modal-h1'>
+              <h2>Welcome to imjord reddit, {username}!</h2>
+               
+                </div>
+               
+                
+  
+                 </div>
+              
+               </div>  : null }
               {log ?  <div className='registration-modal-container'>
               <div> <FontAwesomeIcon onClick={CloseModal} icon={faXmark} id="close-icon-modal" /></div>
               <div className='inner-div-modal'>

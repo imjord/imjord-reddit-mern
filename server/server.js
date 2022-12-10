@@ -6,6 +6,9 @@ const PostRoutes = require('./routes/PostRoute');
 const UserRoutes = require('./routes/UserRoute.js');
 const mongoDB = require('./config/connection');
 const cors = require('cors');
+const passport = require('passport');
+require('./config/passport')(passport);
+
 const session = require('express-session');
 
 //middleware
@@ -25,7 +28,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
-
+// passport middleware 
+app.use(passport.initialize());
+app.use(passport.session());
 
 // routes
 app.get("/", (req, res) => {

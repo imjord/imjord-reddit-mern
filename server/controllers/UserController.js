@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const passport = require('passport');
 
 
 const UserController = {
@@ -12,22 +13,51 @@ const UserController = {
         });
     },
     // create a new user
-    createUser(req,res) {
+    createUser(req,res, next) {
         const newUser = new User({
             email: req.body.email,
             username: req.body.username,
             password: req.body.password
         });
-
+       
        
 
         newUser.save().then(response => {
             res.json({message: "user created!"});
+            
+            
         }).catch(err => {
             console.log(err);
         });
-    }
-
+    },  
+    loginUser(req,res, next){
+        passport.authenticate('local', (err, user, info) => {
+            if(err){
+                console.log(err);
+            }
+            if(user){
+                req.session.user = user.username
+                res.json({message: "User Logged In!", session: req.session})
+                
+                
+            }
+            else{
+                res.json({message: "User Not Found!"})
+            }
+        }
+        )(req,res, next);
+    },
+     // logout page
+     logoutUser(req,res){
+        req.session.destroy((err) => {
+            if(err){
+                console.log(err);
+            } else {
+                res.clearCookie('session').json({message: 'logout complete'});
+            }
+        }
+    )
+    },
 
 };
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -203,15 +205,20 @@
 }
 
 
-.bottom-modal {
 
+
+
+#welcome {
+    background-image: url('./Bubble-Background.svg');
+    font-family: 'Zen Dots';
+    color: white;
 }
 
 
-
-
-
-
+#welcome h2 {
+    font-family: 'Zen Dots', cursive;
+    font-size: 30px;
+}
 
 
 

@@ -28,6 +28,7 @@ const PostController = {
 
         let errors = [];
         const newPost = new Post({
+            user: req.session.user,
             title: req.body.title, 
             content: req.body.content
         })

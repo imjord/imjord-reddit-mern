@@ -5,7 +5,7 @@ const {Schema, model} = require('mongoose');
 const PostSchema = new Schema({
     user: {
         type: String,
-        default: 'Imjord'
+        required: true
     },
     title: {
         type: String,

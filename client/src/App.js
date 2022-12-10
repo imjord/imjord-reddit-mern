@@ -12,6 +12,8 @@ function App() {
   const [posts, setPosts] = useState([{}]);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState([{}]);
+  const [loggedIn, setLoggedIn] = useState(false);
+
   
   const GetPosts = async () => {
     setLoading(true)
@@ -25,13 +27,19 @@ function App() {
   }
 
   const CreateUser = async (email, username, password) => {
-    const res = await axios.post("http://localhost:3001/users", {
-      email: email, 
-      username: username,
-      password: password
-    });
-    setUser(res);
-    alert("user created" , user)
+    try {
+      const res = await axios.post("http://localhost:3001/users", {
+        email: email, 
+        username: username,
+        password: password
+      });
+      setUser(res);
+      setLoggedIn(true);
+    } catch (e){
+      console.log(e)
+    }
+   
+    
   }
 
   useEffect(() => {
@@ -41,7 +49,7 @@ function App() {
 
   return (
     <> 
-    <NavBar CreateUser={CreateUser} />
+    <NavBar CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
     <main>
       <TrendingBar />
       <Filter />
