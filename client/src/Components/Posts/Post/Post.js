@@ -12,9 +12,11 @@ const Post = (props) => {
         return(
           <div className='post-container'>
             <div className='votes-container'>
+              <div>
                     <FontAwesomeIcon id='post-icons' icon={faUpLong} />
                     <p>{item.upvotes.length}</p>
                     <FontAwesomeIcon icon={faDownLong} />
+                    </div>
               </div>
           <div className='post'>
                   

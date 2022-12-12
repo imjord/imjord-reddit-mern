@@ -19,11 +19,9 @@ const UserController = {
             username: req.body.username,
             password: req.body.password
         });
-       
-       
-
         newUser.save().then(response => {
-            res.json({message: "user created!"});
+            req.session.user = newUser.username
+            res.json({message: "user created!", user: req.session.user});
             
             
         }).catch(err => {
@@ -37,7 +35,7 @@ const UserController = {
             }
             if(user){
                 req.session.user = user.username
-                res.json({message: "User Logged In!", session: req.session})
+                res.json({message: "User Logged In!", user: req.session.user});
                 
                 
             }

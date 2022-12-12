@@ -259,3 +259,34 @@
 .inside-circle-div:hover  {
     cursor: pointer;
 }
+
+
+/* user nav */
+
+.user-container {
+   
+
+}
+
+.user-inner {
+    display: flex;
+    padding: 10px;
+    border: 2px solid #d7dadc;
+}
+
+.user-icon {
+    margin-right: 5px;
+    font-size: 20px;
+    color: #d7dadc;
+}
+
+.username {
+    color: #d7dadc;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+#logout-btn {
+    border-radius: 0;
+    margin-left: 10px;
+}
