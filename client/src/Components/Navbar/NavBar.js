@@ -7,7 +7,7 @@ import Bubble from './Bubble-Background.svg';
 import './Nav.css';
 
 const NavBar = (props) => {
-  const {CreateUser,setMsg, loggedIn, setLoggedIn, LoginUser, msg, user, Logout} = props;
+  const {validation, CreateUser, setMsg, loggedIn, setLoggedIn, LoginUser, msg, user, Logout} = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sign, setSign] = useState(false);
   const [log, setLog] = useState(false);
@@ -133,6 +133,9 @@ const NavBar = (props) => {
                 Imjordreddit is anonymous, so your username is what you’ll go by here. Choose wisely—because once you get a name, you can’t change it.
                 </div>
                 {msg == "User Created" ? <div className='success-msg01'> {msg} </div> : null}
+                {validation ? <ul> {validation.map((errors) => {
+                  return <li>{errors}</li>
+                })} </ul> : null}
                 <div className='modal-form'>
                   <form>
                     <input placeholder='Username' for="username" name='username' type="username" onChange={(e) => setUsername(e.target.value)} />

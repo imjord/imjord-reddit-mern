@@ -14,19 +14,43 @@ const UserController = {
     },
     // create a new user
     createUser(req,res, next) {
+        const userValidation = [];
         const newUser = new User({
             email: req.body.email,
             username: req.body.username,
             password: req.body.password
         });
-        newUser.save().then(response => {
-            req.session.user = newUser.username
-            res.json({message: "User Created", user: req.session.user});
-            
-            
-        }).catch(err => {
-            console.log(err);
-        });
+        User.findOne({username: newUser.username}).then((user) => {
+            if(user){
+                userValidation.push("Username already exists!");
+                res.status(400).json(userValidation);
+            }
+        })
+        if (!newUser.email){
+            userValidation.push("Please Enter a Valid Email Address");
+        }
+        if(!newUser.username) { 
+            userValidation.push("Please Enter a Username");
+        }
+        if(!newUser.password){
+            userValidation.push("Please Enter a Password");
+        }
+        if(newUser.password.length < 6){
+            userValidation.push("Please enter a password greater than 6 letters");
+        }
+        if(userValidation.length > 0){
+            res.status(400).json(userValidation);
+        } else {
+            newUser.save().then(response => {
+                req.session.user = newUser.username
+                res.json({message: "User Created", user: req.session.user});
+                
+                
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+        
     },  
     loginUser(req,res, next){
         passport.authenticate('local', (err, user, info) => {

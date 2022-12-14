@@ -15,6 +15,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
   const [msg, setMsg] = useState("");
+  const [validation, setValidation] = useState([]);
   
 
   const Logout = async () => {
@@ -72,11 +73,14 @@ function App() {
       },
       {withCredentials: true});
       localStorage.setItem('loggedIn', res.data.user);
+      
+     
       setLoggedIn(true);
       setUser(res.data.user);
       setMsg(res.data.message);
     } catch (e){
       console.log(e)
+      setValidation(e.response.data);
     }
    
     
@@ -94,7 +98,7 @@ function App() {
 
   return (
     <> 
-    <NavBar setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
+    <NavBar validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
     <main>
       <TrendingBar />
       <Filter />
