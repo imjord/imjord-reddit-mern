@@ -7,7 +7,7 @@ import Bubble from './Bubble-Background.svg';
 import './Nav.css';
 
 const NavBar = (props) => {
-  const {CreateUser, loggedIn, setLoggedIn, LoginUser, msg, user} = props;
+  const {CreateUser,setMsg, loggedIn, setLoggedIn, LoginUser, msg, user, Logout} = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sign, setSign] = useState(false);
   const [log, setLog] = useState(false);
@@ -32,6 +32,7 @@ const NavBar = (props) => {
     setLog(false);
     setSign(false);
     setContinueSignup(false);
+    setMsg("");
    
   }
 
@@ -43,6 +44,8 @@ const NavBar = (props) => {
     e.preventDefault();
     CreateUser(email, username, password);
   }
+
+ 
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -63,7 +66,7 @@ const NavBar = (props) => {
                 <div className='user-icon'><FontAwesomeIcon icon={faUserTie} id="user-icon" /> </div>
                 <div className='username'> {user} </div>
                 <div id='logout-btn'>
-                    <button>Logout</button>
+                    <button onClick={Logout}>Logout</button>
                     </div>
                   </div>
                   
@@ -129,6 +132,7 @@ const NavBar = (props) => {
                 <div className='modal-privacy'>
                 Imjordreddit is anonymous, so your username is what you’ll go by here. Choose wisely—because once you get a name, you can’t change it.
                 </div>
+                {msg == "User Created" ? <div className='success-msg01'> {msg} </div> : null}
                 <div className='modal-form'>
                   <form>
                     <input placeholder='Username' for="username" name='username' type="username" onChange={(e) => setUsername(e.target.value)} />
@@ -152,6 +156,8 @@ const NavBar = (props) => {
                 <div className='modal-privacy'>
                 By continuing, you are setting up a Imjord Reddit account and agree to our User Agreement and Privacy Policy.
                 </div>
+                 {msg == "User Not Found" ? <div className='error-msg'> {msg} </div> : null }
+                 {msg == "User Logged In" ? <div className='success-msg'> {msg} </div> : null}
                 <div className='modal-form'>
                   <form>
                   <input placeholder='Username' for="username" name='username' type="username" onChange={(e) => setUsername(e.target.value)} />

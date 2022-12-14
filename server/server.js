@@ -5,8 +5,11 @@ const CommentRoutes = require('./routes/CommentRoute');
 const PostRoutes = require('./routes/PostRoute');
 const UserRoutes = require('./routes/UserRoute.js');
 const mongoDB = require('./config/connection');
+const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const passport = require('passport');
+const MongoStore = require('connect-mongo');
+
 require('./config/passport')(passport);
 
 const session = require('express-session');
@@ -21,22 +24,23 @@ app.use(cors({
 
 
 // session
-
+app.use(cookieParser());
 app.use(session({
     secret: 'imjord',
-    resave: true,
+    resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    store: MongoStore.create({
+        collectionName: 'sessions',
+        mongoUrl: "mongodb://127.0.0.1:27017/imjordreddit"
+    }),
+    cookie: { maxAge: 1000 * 60 *60 *24, secure: false }
 }));
 // passport middleware 
 app.use(passport.initialize());
 app.use(passport.session());
 
 // routes
-app.get("/", (req, res) => {
-    console.log(req.session);
-    res.json({message: req.session})
-});
+
 app.use("/", PostRoutes)
 app.use('/', CommentRoutes);
 app.use('/', UserRoutes)

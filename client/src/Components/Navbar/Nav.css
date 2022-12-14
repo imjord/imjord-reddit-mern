@@ -205,7 +205,31 @@
 }
 
 
+.error-msg {
+    position: absolute;
+    top: 170px;
+    background-color: #d93a00;
+    color: #1a1a1b;
+    padding: 15px;
+    font-weight: bold;
+}
 
+.success-msg {
+    position: absolute;
+    top: 170px;
+    background-color: rgb(135, 255, 135);
+    color: #1a1a1b;
+    padding: 15px;
+    font-weight: bold;
+}
+.success-msg01 {
+    position: absolute;
+    top: 250px;
+    background-color: rgb(135, 255, 135);
+    color: #1a1a1b;
+    padding: 15px;
+    font-weight: bold;
+}
 
 
 #welcome {
@@ -263,10 +287,7 @@
 
 /* user nav */
 
-.user-container {
-   
 
-}
 
 .user-inner {
     display: flex;

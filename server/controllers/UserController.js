@@ -21,7 +21,7 @@ const UserController = {
         });
         newUser.save().then(response => {
             req.session.user = newUser.username
-            res.json({message: "user created!", user: req.session.user});
+            res.json({message: "User Created", user: req.session.user});
             
             
         }).catch(err => {
@@ -35,18 +35,19 @@ const UserController = {
             }
             if(user){
                 req.session.user = user.username
-                res.json({message: "User Logged In!", user: req.session.user});
+                res.json({message: "User Logged In", user: req.session.user});
                 
                 
             }
             else{
-                res.json({message: "User Not Found!"})
+                res.json({message: "User Not Found"})
             }
         }
         )(req,res, next);
     },
      // logout page
      logoutUser(req,res){
+        
         req.session.destroy((err) => {
             if(err){
                 console.log(err);
