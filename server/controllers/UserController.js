@@ -20,6 +20,7 @@ const UserController = {
             username: req.body.username,
             password: req.body.password
         });
+        // create user validation 
         User.findOne({username: newUser.username}).then((user) => {
             if(user){
                 userValidation.push("Username already exists!");
@@ -81,6 +82,14 @@ const UserController = {
         }
     )
     },
+    // get user by id
+    getUser(req, res){
+        User.findById(req.params.id).then(response => {
+            res.json(response);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
 
 };
 

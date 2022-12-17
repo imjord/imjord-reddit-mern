@@ -5,9 +5,12 @@ import Posts from './Components/Posts/Posts';
 import TrendingBar from './Components/TrendingBar/TrendingBar';
 import './App.css' 
 import Spinner from './Components/Spinner/Spinner';
-import {BrowserRouter} from 'react-router-dom';
-
 import axios from "axios";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+
+
+
 function App() {
   const [posts, setPosts] = useState([{}]);
   const [loading, setLoading] = useState(false);
@@ -16,7 +19,15 @@ function App() {
   const [signUp, setSignUp] = useState(false);
   const [msg, setMsg] = useState("");
   const [validation, setValidation] = useState([]);
-  
+  const [userSettings, setUserSettings] = useState({});
+
+
+  const UserSettings = async (id) => {
+    const res = await axios.get(`http://localhost:3001/user/${id}`);
+    console.log(res.data);
+    setUserSettings(res.data);
+  }
+
 
   const Logout = async () => {
 
@@ -50,7 +61,7 @@ function App() {
         setMsg(res.data.message);
       } else {
       // set logged in to local storage
-      localStorage.setItem('loggedIn', res.data.user);
+      localStorage.setItem("imjordRedditLoggedIn", res.data.user);
       setLoggedIn(true);
       setMsg(res.data.message);
       setUser(res.data.user);
@@ -72,12 +83,13 @@ function App() {
         password: password
       },
       {withCredentials: true});
-      localStorage.setItem('loggedIn', res.data.user);
+      localStorage.setItem("imjordRedditLoggedIn", res.data.user);
       
      
       setLoggedIn(true);
       setUser(res.data.user);
       setMsg(res.data.message);
+      setValidation("");
     } catch (e){
       console.log(e)
       setValidation(e.response.data);
@@ -87,7 +99,7 @@ function App() {
   }
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('loggedIn');
+    const loggedInUser = localStorage.getItem("imjordRedditLoggedIn");
     if(loggedInUser){
       setUser(loggedInUser);
       console.log(user)
@@ -97,14 +109,12 @@ function App() {
 
 
   return (
-    <> 
-    <NavBar validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
-    <main>
-      <TrendingBar />
-      <Filter />
-      <Posts posts={posts} loading={loading} />
-    </main>
-    </>
+   <BrowserRouter>
+    <NavBar UserSettings={UserSettings} setValidation={setValidation} validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
+    <Routes>
+      <Route path="/" element={<Home GetPosts={GetPosts} posts={posts} loading={loading} />} />
+    </Routes>
+    </BrowserRouter>
    
   );
 }

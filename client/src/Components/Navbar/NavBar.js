@@ -1,13 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import SearchBar from '../SearchBar/SearchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUserTie, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faScroll, faBullhorn, faDoorOpen, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
-import SignUp from '../Registration/SignUp';
-import Bubble from './Bubble-Background.svg';
+import { faUser, faGear, faUserTie, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faScroll, faBullhorn, faDoorOpen, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import './Nav.css';
 
 const NavBar = (props) => {
-  const {validation, CreateUser, setMsg, loggedIn, setLoggedIn, LoginUser, msg, user, Logout} = props;
+  const {UserSettings, setValidation, validation, CreateUser, setMsg, loggedIn, setLoggedIn, LoginUser, msg, user, Logout} = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sign, setSign] = useState(false);
   const [log, setLog] = useState(false);
@@ -15,7 +13,7 @@ const NavBar = (props) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [userDropDown, setUserDropDown] = useState(false);
 
 
   const toggle = () => {
@@ -33,6 +31,7 @@ const NavBar = (props) => {
     setSign(false);
     setContinueSignup(false);
     setMsg("");
+    setValidation("");
    
   }
 
@@ -52,6 +51,14 @@ const NavBar = (props) => {
     LoginUser(username, password);
   }
 
+  // user drop down settings 
+ 
+
+  const toggleUserDropDown = () => {
+    setUserDropDown(!userDropDown);
+  }
+
+
 
   return (
     <nav className='nav'>
@@ -65,9 +72,16 @@ const NavBar = (props) => {
                 <div className="user-inner">
                 <div className='user-icon'><FontAwesomeIcon icon={faUserTie} id="user-icon" /> </div>
                 <div className='username'> {user} </div>
-                <div id='logout-btn'>
+                <div onClick={toggleUserDropDown} className='user-icon' ><FontAwesomeIcon   icon={faCaretDown} id="user-icon" /> </div>
+                {userDropDown ? <div className='dropdown-container'>
+              <div className='mode'>  <FontAwesomeIcon icon={faMoon}  /> Dark Mode  </div>
+              <div onClick={UserSettings(user._id)}> <FontAwesomeIcon icon={faGear}/>  Settings </div>
+              <hr/>
+              <div  onClick={Logout}><FontAwesomeIcon icon={faDoorOpen}/> Logout </div>
+              </div> : null}
+                {/* <div id='logout-btn'>
                     <button onClick={Logout}>Logout</button>
-                    </div>
+                    </div> */}
                   </div>
                   
                  </div>
