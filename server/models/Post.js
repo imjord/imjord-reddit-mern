@@ -18,6 +18,10 @@ const PostSchema = new Schema({
         trim: true, 
         required: true
     },
+    image: {
+        type: String,
+        default: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y'
+    },
     date: {
         type: Date,
         default: Date.now
@@ -38,7 +42,11 @@ const PostSchema = new Schema({
     }],
     downvotes:[{
         type: Number
-    }] 
+    }], 
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 

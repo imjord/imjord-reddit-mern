@@ -8,11 +8,12 @@ import Spinner from './Components/Spinner/Spinner';
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-
+import UserPage from './pages/UserPage';
 
 
 function App() {
   const [posts, setPosts] = useState([{}]);
+  const [post, setPost] = useState([{}]);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -20,7 +21,7 @@ function App() {
   const [msg, setMsg] = useState("");
   const [validation, setValidation] = useState([]);
   const [userSettings, setUserSettings] = useState({});
-
+  const [postModal, setPostModal] = useState(false);
 
   const UserSettings = async (id) => {
     const res = await axios.get(`http://localhost:3001/user/${id}`);
@@ -45,8 +46,13 @@ function App() {
     setLoading(false);
   }
 
-  const GetPostDetails = async (id) => {
-    const res = await axios.get('http://localhost:3001/login');
+  const GetSinglePost = async (id) => {
+    setLoading(true)
+    setPostModal(true);
+    const res = await axios.get(`http://localhost:3001/posts/${id}`);
+    console.log(res.data);
+    setPost(res.data);
+    setLoading(false);
   }
 
   const LoginUser = async (username, password) => {
@@ -110,9 +116,10 @@ function App() {
 
   return (
    <BrowserRouter>
-    <NavBar UserSettings={UserSettings} setValidation={setValidation} validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
+    <NavBar  UserSettings={UserSettings} setValidation={setValidation} validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
     <Routes>
-      <Route path="/" element={<Home GetPosts={GetPosts} posts={posts} loading={loading} />} />
+      <Route path="/" element={<Home setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
+      <Route path="/user/:id" element={<UserPage />} />
     </Routes>
     </BrowserRouter>
    

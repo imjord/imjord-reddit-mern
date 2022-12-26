@@ -4,11 +4,11 @@ import './Posts.css'
 
 const Posts = (props) => {
 
-  const {posts, loading } = props;
+  const {setPostModal, posts, GetSinglePost, post, loading } = props;
 
   return (
     <div className='posts-div'>
-        <Post posts={posts} loading={loading} />
+        <Post setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post} posts={posts} loading={loading} />
       
     </div>
   )
