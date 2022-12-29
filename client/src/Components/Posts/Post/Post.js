@@ -6,13 +6,18 @@ import Spinner from '../../Spinner/Spinner'
 import image from './m.png';
 
 const Post = (props) => {
- const {posts, setPostModal, GetSinglePost, post, loading } = props;
+ const {posts, CreateComment, setPostModal, GetSinglePost, post, loading } = props;
 const [toggle, setToggle] = useState(false);
+const [comment, setComment] = useState('');
 
 
 const CloseModal = () => {
   post._id = null;
   setPostModal(false);
+} 
+const handleSubmit = (e) => {
+  e.preventDefault();
+  CreateComment(post._id, comment);
 }
 
   return (
@@ -57,9 +62,14 @@ const CloseModal = () => {
             </div>
             {/* form with a text area asking for user thoughts */}
             <div className='post-details-form'>
-              <div className='post-details-form-item'> <textarea placeholder='What are your thoughts?' /> </div>
-              <div className='post-details-form-item'> <button>Submit</button> </div>
+              <div className='post-details-form-item'> <textarea onChange={(e) => setComment(e.target.value)} placeholder='What are your thoughts?' /> </div>
+              <div className='post-details-form-item'> <button onClick={handleSubmit}>Submit</button> </div>
               </div>
+              <div>
+              <div className='post-details-comments'>
+                  <div className='post-details-comments-item'> <span>r/{posts.comments}   </span><span className='user-color'>posted by u/{post.user}  </span> </div>
+                </div>
+                </div>
           </div>
           <div className='community-details'>
         <div className='community-details-header'>

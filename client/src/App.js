@@ -22,6 +22,16 @@ function App() {
   const [validation, setValidation] = useState([]);
   const [userSettings, setUserSettings] = useState({});
   const [postModal, setPostModal] = useState(false);
+  const [comment, setComment] = useState({});
+
+
+  const CreateComment = async (id, text) => {
+    const res = await axios.post(`http://localhost:3001/comment/${id}`, {
+      text: text
+    }, {withCredentials: true});
+    console.log(res);
+    setComment(res.data);
+  }
 
   const UserSettings = async (id) => {
     const res = await axios.get(`http://localhost:3001/user/${id}`);
@@ -59,7 +69,7 @@ function App() {
 
     try {
       const res = await axios.post("http://localhost:3001/login", {
-      username: username,
+        username: username,
         password: password
     }, {withCredentials: true});
     console.log(res);
@@ -118,7 +128,7 @@ function App() {
    <BrowserRouter>
     <NavBar  UserSettings={UserSettings} setValidation={setValidation} validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
     <Routes>
-      <Route path="/" element={<Home setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
+      <Route path="/" element={<Home CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
       <Route path="/user/:id" element={<UserPage />} />
     </Routes>
     </BrowserRouter>

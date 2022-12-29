@@ -4,8 +4,7 @@ const {Schema, model} = require('mongoose');
 
 const CommentSchema = new Schema({
     user: {
-        type: String,
-        default: 'Coco'
+        type: String
     },
     text: {
         type: String,

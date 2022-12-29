@@ -25,6 +25,9 @@ const PostController = {
     },
     // make a post 
     CreatePost(req,res){
+        // create a new post as a user
+        
+        
 
         let errors = [];
         const newPost = new Post({
