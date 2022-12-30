@@ -89,8 +89,23 @@ const UserController = {
         }).catch(err => {
             console.log(err);
         });
-    }
-
+    },
+    // get user and populate their comments
+    getUserComments(req, res){
+        User.findById(req.params.id).populate('comments').then(response => {
+            res.json(response);
+        }).catch(err => {
+            console.log(err);
+        });
+    },
+    // get user and populate their posts
+    getUserPosts(req, res){
+        User.findById(req.params.id).populate('posts').then(response => {
+            res.json(response);
+        }).catch(err => {
+            console.log(err);
+        });
+    },
 };
 
 

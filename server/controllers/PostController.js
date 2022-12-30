@@ -1,6 +1,6 @@
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
-
+const User = require('../models/User');
 
 
 const PostController = {
@@ -35,6 +35,12 @@ const PostController = {
             title: req.body.title, 
             content: req.body.content
         })
+
+        // add the post to the users posts array
+        const user = User.findOne({username: req.session.user});
+        user.posts.push(newPost);
+        user.save();
+
         
     //   need validation 
         newPost.save().then(
