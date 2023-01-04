@@ -77,7 +77,7 @@ const UserController = {
             if(err){
                 console.log(err);
             } else {
-                res.clearCookie('session').json({message: 'logout complete'});
+                res.clearCookie('connect.sid').json({message: 'logout complete'});
             }
         }
     )

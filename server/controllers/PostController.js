@@ -37,10 +37,15 @@ const PostController = {
         })
 
         // add the post to the users posts array
-        const user = User.findOne({username: req.session.user});
-        user.posts.push(newPost);
-        user.save();
+        const user = User.findOne({username: req.session.user}).then(results => {
+            console.log(results);
+            results.posts.push(newPost);
+            results.save();
 
+        }).catch(err => {
+            console.log(err);
+        })
+        // add the post to the community posts array
         
     //   need validation 
         newPost.save().then(
@@ -48,6 +53,40 @@ const PostController = {
                 res.json({message: "Post created"});
             }
         ).catch(err => {
+            console.log(err);
+        })
+    },
+    // a user can like a post
+    LikePost(req,res){
+        Post.findById({_id: req.params.id}).then(post => {
+            post.likes = post.likes + 1;
+            post.save().then(
+                results => {
+                    res.json({message: "Post liked"});
+                    console.log(post.likes);
+                }
+            ).catch(err => {
+                console.log(err);
+            })
+        }).catch(err => {
+            console.log(err);
+        })
+    }, 
+
+    // a user can dislike a post
+    DislikePost(req,res){
+        Post.findById({_id: req.params.id}).then(post => {
+            post.likes =  post.likes - 1;
+            post.save().then(
+                results => {
+                    res.json({message: "Post disliked"});
+                    // console log the likes 
+                    console.log(post.likes);
+                }
+            ).catch(err => {
+                console.log(err);
+            })
+        }).catch(err => {
             console.log(err);
         })
     }

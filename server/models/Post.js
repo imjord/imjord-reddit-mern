@@ -37,12 +37,10 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Comment'
     }],
-    upvotes: [{
-        type: Number
-    }],
-    downvotes:[{
-        type: Number
-    }], 
+    likes: {
+        type: Number,
+        default: 0
+    }, 
     createdAt: {
         type: Date,
         default: Date.now

@@ -5,12 +5,12 @@ import Posts from "../Components/Posts/Posts";
 
 
 const Home = (props) => {
-    const {userComment, GetComments, CreateComment, setPostModal, posts, post, GetSinglePost, loading} = props;
+    const { LikePost, DislikePost, userComment, GetComments, CreateComment, setPostModal, posts, post, GetSinglePost, loading} = props;
     return (
         <main>
         <TrendingBar />
         <Filter />
-        <Posts userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal}  post={post} GetSinglePost={GetSinglePost} posts={posts} loading={loading}/>
+        <Posts DislikePost={DislikePost} LikePost={LikePost} userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal}  post={post} GetSinglePost={GetSinglePost} posts={posts} loading={loading}/>
       </main>
     )
 };

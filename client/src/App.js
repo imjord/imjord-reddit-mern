@@ -35,10 +35,20 @@ function App() {
   // get comments on a post return an array of comments
 const GetComments = async (id) => {
   const res = await axios.get(`http://localhost:3001/comment/${id}`);
-  console.log(res.data);
   userSetComment(res.data);
 }
   
+
+// like a post
+const LikePost = async (id) => {
+  const res = await axios.post(`http://localhost:3001/posts/${id}/like`,  {withCredentials: true});
+}
+
+// dislike a post
+const DislikePost = async (id) => {
+  const res = await axios.post(`http://localhost:3001/posts/${id}/dislike`,  {withCredentials: true});
+  console.log(res.data);
+}
 
   const UserSettings = async (id) => {
     const res = await axios.get(`http://localhost:3001/user/${id}`);
@@ -49,7 +59,7 @@ const GetComments = async (id) => {
 
   const Logout = async () => {
 
-    const res = await axios.get("http://localhost:3001/logout");
+    const res = await axios.get("http://localhost:3001/logout", {withCredentials: true});
     setLoggedIn(false);
     localStorage.clear();
     setUser([]);
@@ -136,7 +146,7 @@ const GetComments = async (id) => {
    <BrowserRouter>
     <NavBar  UserSettings={UserSettings} setValidation={setValidation} validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
     <Routes>
-      <Route path="/" element={<Home userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
+      <Route path="/" element={<Home  DislikePost={DislikePost} LikePost={LikePost} userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
       <Route path="/user/:id" element={<UserPage />} />
     </Routes>
     </BrowserRouter>

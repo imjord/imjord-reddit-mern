@@ -7,7 +7,7 @@ import image from './m.png';
 import { formatDate } from '../../../lib/Moment';
 
 const Post = (props) => {
- const {userComment, GetComments, posts, CreateComment, setPostModal, GetSinglePost, post, loading } = props;
+ const { DislikePost, LikePost, userComment, GetComments, posts, CreateComment, setPostModal, GetSinglePost, post, loading } = props;
 const [toggle, setToggle] = useState(false);
 const [comment, setComment] = useState('');
 
@@ -43,7 +43,7 @@ useEffect(() => {
             <div className='votes-container'>
               <div>
                     <FontAwesomeIcon id='post-icons' icon={faUpLong} />
-                    <p>{item.upvotes.length}</p>
+                    <p>{item.likes ? item.likes : 0}</p>
                     <FontAwesomeIcon icon={faDownLong} />
                     </div>
               </div>
@@ -59,7 +59,7 @@ useEffect(() => {
        
       })}  </div>}
       {post._id ? <div className='POST-CONTAINER'> <div className='post-details'> <div className='post-nav'>
-        <div className='post-nav-item'> <FontAwesomeIcon id='post-icons' icon={faUpLong} /> {post.upvotes.length} <FontAwesomeIcon id='post-icons' icon={faDownLong} />  {post.upvotes}  </div>
+        <div className='post-nav-item'> <FontAwesomeIcon onClick={() => LikePost(post._id)} id='post-icons' icon={faUpLong} /> {post.likes} <FontAwesomeIcon id='post-icons' onClick={() => DislikePost(post._id)} icon={faDownLong} />  {post.upvotes}  </div>
           <div className='post-nav-item' id='post-title-item'> {post.title}  </div>
           <div className='post-nav-item'> <FontAwesomeIcon icon={faX} onClick={() => CloseModal()} />   </div>
          </div> 
