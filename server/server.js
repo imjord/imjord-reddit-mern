@@ -4,6 +4,7 @@ const PORT = 3001;
 const CommentRoutes = require('./routes/CommentRoute');
 const PostRoutes = require('./routes/PostRoute');
 const UserRoutes = require('./routes/UserRoute.js');
+const CommunityRoutes = require('./routes/CommunityRoute.js');
 const mongoDB = require('./config/connection');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
@@ -41,9 +42,10 @@ app.use(passport.session());
 
 // routes
 
-app.use("/", PostRoutes)
+app.use("/", PostRoutes);
 app.use('/', CommentRoutes);
-app.use('/', UserRoutes)
+app.use('/', UserRoutes);
+app.use('/', CommunityRoutes);
 
 // db and server
 mongoDB.once('open', () => {

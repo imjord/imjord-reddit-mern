@@ -27,10 +27,8 @@ const PostSchema = new Schema({
         default: Date.now
     },
     community: {
-        // type: Schema.Types.ObjectId,
-        // ref: 'Community',
-        type: String,
-        default: 'Jord Community'
+        type: Schema.Types.ObjectId,
+         ref: 'Community',
     },
     // array of comments for 1 post
     comments: [{

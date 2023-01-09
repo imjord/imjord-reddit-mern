@@ -41,12 +41,12 @@ const GetComments = async (id) => {
 
 // like a post
 const LikePost = async (id) => {
-  const res = await axios.post(`http://localhost:3001/posts/${id}/like`,  {withCredentials: true});
+  const res = await axios.post(`http://localhost:3001/posts/${id}/like`, {}, {withCredentials: true});
 }
 
 // dislike a post
 const DislikePost = async (id) => {
-  const res = await axios.post(`http://localhost:3001/posts/${id}/dislike`,  {withCredentials: true});
+  const res = await axios.post(`http://localhost:3001/posts/${id}/dislike`, {},  {withCredentials: true});
   console.log(res.data);
 }
 
@@ -70,6 +70,7 @@ const DislikePost = async (id) => {
     setLoading(true)
     const res = await axios.get('http://localhost:3001/posts');
     setPosts(res);   
+    console.log(res);
     setLoading(false);
   }
 

@@ -1,7 +1,7 @@
 // auth routes for when going to user logged in areas 
 
 
-const requireAuth = (req, res, next) => {
+ const requireAuth = (req, res, next) => {
     const { user } = req.session;
     if (!user) {
         return res.status(401).json({ message: 'You must be logged in to view this page' });
@@ -10,5 +10,8 @@ const requireAuth = (req, res, next) => {
 }
 
 
+  
+
 module.exports = requireAuth;
+
 

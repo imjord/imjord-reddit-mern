@@ -65,7 +65,7 @@ useEffect(() => {
          </div> 
           <div className='post-details-container'>
             <div className='post-details-header'>
-              <div className='post-details-header-item'> <span>r/{post.community}   </span><span className='user-color'>posted by u/{post.user}  </span> </div>
+              <div className='post-details-header-item'> <span>r/{post.community.name}  </span><span className='user-color'>posted by u/{post.user}  </span> </div>
               <div className='post-details-header-item'> <span>{post.title}  </span> </div>
             </div>
             <div className='post-details-content'>

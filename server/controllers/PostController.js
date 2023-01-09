@@ -1,6 +1,7 @@
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
 const User = require('../models/User');
+const Community = require('../models/Community');
 
 
 const PostController = {
@@ -8,7 +9,7 @@ const PostController = {
     // get posts method 
     GetPosts(req,res){
         
-        Post.find().populate("comments").then(results => {
+        Post.find().populate("comments").populate("community").then(results => {
             res.json(results);
             console.log(req.session);
         }).catch(err => {
@@ -33,7 +34,8 @@ const PostController = {
         const newPost = new Post({
             user: req.session.user,
             title: req.body.title, 
-            content: req.body.content
+            content: req.body.content,
+            community: req.body.communityId,
         })
 
         // add the post to the users posts array
@@ -46,6 +48,12 @@ const PostController = {
             console.log(err);
         })
         // add the post to the community posts array
+        const community = Community.findById({_id: req.body.communityId}).then(results => {
+            results.posts.push(newPost);
+            results.save();
+        }).catch(err => {
+            console.log(err);
+        })
         
     //   need validation 
         newPost.save().then(
