@@ -9,7 +9,7 @@ const PostController = {
     // get posts method 
     GetPosts(req,res){
         
-        Post.find().populate("comments").populate("community").then(results => {
+        Post.find().populate("community").populate("comments").then(results => {
             res.json(results);
             console.log(req.session);
         }).catch(err => {
@@ -18,7 +18,7 @@ const PostController = {
     },
     // get a post by id 
     GetPostDetails(req,res) {
-        Post.findById({_id: req.params.id}).populate("comments").then(results => {
+        Post.findById({_id: req.params.id}).populate("comments").populate("community").then(results => {
             res.json(results)
         }).catch(err => {
             console.log(err)
@@ -35,7 +35,7 @@ const PostController = {
             user: req.session.user,
             title: req.body.title, 
             content: req.body.content,
-            community: req.body.communityId,
+            community: req.body.community,
         })
 
         // add the post to the users posts array

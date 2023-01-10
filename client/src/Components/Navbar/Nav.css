@@ -296,7 +296,6 @@
 .user-inner {
     display: flex;
     padding: 10px;
-    border: 2px solid #d7dadc;
 }
 
 .user-icon {
@@ -314,4 +313,23 @@
 #logout-btn {
     border-radius: 0;
     margin-left: 10px;
+}
+
+.logged-user {
+    display: flex;
+}
+
+.user-option-container {
+    display: flex;
+    padding: 10px;
+    margin-right: 10px;
+    color: white;
+   
+}
+#post-icon {
+    font-size: 20px;
+    
+}
+.user-option-container:hover {
+    cursor: pointer;
 }

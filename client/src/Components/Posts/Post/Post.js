@@ -49,7 +49,7 @@ useEffect(() => {
               </div>
           <div className='post'>
                   
-            <div> <span>r/{item.community}   </span><span className='user-color'>posted by u/{item.user}  </span> </div>
+            <div> <span>r/{item.community.name}   </span><span className='user-color'>posted by u/{item.user}  </span> </div>
           <div> <h3>{item.title} </h3> </div>
          
           <div id='post-icons'><FontAwesomeIcon id='post-icons' icon={faComments} /> {item.comments.length} Comments  <FontAwesomeIcon id='post-icons' icon={faShare} />  Share ...</div>
@@ -100,7 +100,7 @@ useEffect(() => {
           
           <div className='community-details'>
         <div className='community-details-header'>
-          <div className='community-details-header-item'> <span>r/{post.community}   hehet</span> </div>
+          <div className='community-details-header-item'> <span>r/{post.community.name}   hehet</span> </div>
           
       </div> </div>
      </div>

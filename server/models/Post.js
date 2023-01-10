@@ -29,6 +29,7 @@ const PostSchema = new Schema({
     community: {
         type: Schema.Types.ObjectId,
          ref: 'Community',
+            required: true
     },
     // array of comments for 1 post
     comments: [{
