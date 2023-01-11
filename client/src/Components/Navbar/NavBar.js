@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import SearchBar from '../SearchBar/SearchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom';
 import { faUser, faPlus, faGear, faUserTie, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faScroll, faBullhorn, faDoorOpen, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import './Nav.css';
 
@@ -63,13 +64,13 @@ const NavBar = (props) => {
   return (
     <nav className='nav'>
         <div>
-        <FontAwesomeIcon icon={faRobot} id="icon" />
+        <Link to={"/"}> <FontAwesomeIcon icon={faRobot} id="icon" /> </Link>
         </div>
         <SearchBar />
           <div className='nav-btn-div'>
               {user.length > 0 ? 
               <div className='logged-user'>
-                <div className='user-option-container'> <FontAwesomeIcon icon={faPlus} id="post-icon" /> </div>
+                <div className='user-option-container'> <Link id='link' to={"/submit"}> <FontAwesomeIcon icon={faPlus} id="post-icon" /> </Link> </div>
               <div className='user-container'>
                 <div className="user-inner">
                 <div className='user-icon'><FontAwesomeIcon icon={faUserTie} id="user-icon" /> </div>

@@ -30,5 +30,15 @@ hr {
 }
 
 .post-form-control {
-    background-color: gray;
+    background-color: rgb(57, 57, 57);
+    color: #7b7d7e;
+    border-radius: 20px;
+}
+
+.input-margin {
+    margin: 10px;
+}
+
+#text {
+    height: 100px;
 }

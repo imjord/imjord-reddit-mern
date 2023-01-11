@@ -10,4 +10,5 @@ router.post('/community/join/:id', requireAuth, JoinCommunity);
 
 
 
+
 module.exports = router;

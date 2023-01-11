@@ -24,7 +24,25 @@ function App() {
   const [userSettings, setUserSettings] = useState({});
   const [postModal, setPostModal] = useState(false);
   const [userComment, userSetComment] = useState([{}]);
+  const [communties, setCommunties] = useState([{}]);
+  
 
+
+  // get all communties
+  const GetCommunties = async () => {
+    const res = await axios.get('http://localhost:3001/community');
+    setCommunties(res.data);
+  };
+
+  // create a post 
+  const CreatePost = async (title, content, community) => {
+    const res = await axios.post('http://localhost:3001/posts', {
+      title: title,
+      content: content,
+      community: community
+    }, {withCredentials: true});
+    console.log(res.data);
+  };
 
   // create a comment on a post dont return anything
   const CreateComment = async (id, text) => {
@@ -150,7 +168,7 @@ const DislikePost = async (id) => {
     <Routes>
       <Route path="/" element={<Home  DislikePost={DislikePost} LikePost={LikePost} userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
       <Route path="/user/:id" element={<UserPage />} />
-      <Route path="/submit" element={<Post user={user}/>} />
+      <Route path="/submit" element={<Post CreatePost={CreatePost} communties={communties} GetCommunties={GetCommunties} user={user}/>} />
       <Route path="*" element={<h1>404</h1>} />
      
     </Routes>

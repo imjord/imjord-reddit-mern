@@ -333,3 +333,7 @@
 .user-option-container:hover {
     cursor: pointer;
 }
+
+#link {
+    color: #7b7d7e;
+}
