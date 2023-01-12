@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./Post.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 
 
 const Post = (props) => {
@@ -49,7 +51,7 @@ const Post = (props) => {
 
                     </div>
                     </div>
-                    <button type="submit"  className="btn btn-primary">Post</button>
+                    <button type="submit"  className="post-btn">Post</button>
             </form>
         </div>
              </div>
@@ -57,6 +59,20 @@ const Post = (props) => {
             <div className="rules">
                 <div className="title-postPage">Posting to imjord reddit</div>
             </div>
+            <hr />
+            <div className="ruleList">
+                <ul>
+                    <li>Be respectful</li>
+                    <li>Be civil</li>
+                    <li> <FontAwesomeIcon icon={faFaceSmile} /> Be kind</li>
+                    <li>Be helpful</li>
+                    <li>Be honest</li>
+                    <li>Be funny</li>
+                    <li>Be original</li>
+                    <li>Be creative</li>
+                    <li>Be yourself</li>
+                </ul>
+                </div>
             </div>
         
     </div> : <div> <p> you must be logged in to view this page</p></div>}

@@ -7,10 +7,9 @@ import image from './m.png';
 import { formatDate } from '../../../lib/Moment';
 
 const Post = (props) => {
- const { DislikePost, LikePost, userComment, GetComments, posts, CreateComment, setPostModal, GetSinglePost, post, loading } = props;
+const { DislikePost, LikePost, userComment, GetComments, posts, CreateComment, setPostModal, GetSinglePost, post, loading } = props;
 const [toggle, setToggle] = useState(false);
 const [comment, setComment] = useState('');
-
 
 const CloseModal = () => {
   post._id = null;
@@ -20,7 +19,6 @@ const handleSubmit = (e) => {
   e.preventDefault();
   CreateComment(post._id, comment);
 }
-
 // use effect to get comments
 useEffect(() => {
   // if post id is not null, get comments
@@ -32,9 +30,6 @@ useEffect(() => {
     return;
   }
 }, [post._id], [userComment])
-
-
-
   return (
       <div className='post-component'>
         {loading ? <Spinner /> : <div> {posts.data?.map((item) => {
@@ -47,16 +42,13 @@ useEffect(() => {
                     <FontAwesomeIcon icon={faDownLong} />
                     </div>
               </div>
-          <div className='post'>
-                  
-            <div> <span>r/{item.community.name}   </span><span className='user-color'>posted by u/{item.user}  </span> </div>
+          <div className='post'>    
+          <div> <span>r/{item.community.name}   </span><span className='user-color'>posted by u/{item.user}  </span> </div>
           <div> <h3>{item.title} </h3> </div>
-         
           <div id='post-icons'><FontAwesomeIcon id='post-icons' icon={faComments} /> {item.comments.length} Comments  <FontAwesomeIcon id='post-icons' icon={faShare} />  Share ...</div>
           </div>
           </div>
         )
-       
       })}  </div>}
       {post._id ? <div className='POST-CONTAINER'> <div className='post-details'> <div className='post-nav'>
         <div className='post-nav-item'> <FontAwesomeIcon onClick={() => LikePost(post._id)} id='post-icons' icon={faUpLong} /> {post.likes} <FontAwesomeIcon id='post-icons' onClick={() => DislikePost(post._id)} icon={faDownLong} />  {post.upvotes}  </div>
@@ -75,11 +67,8 @@ useEffect(() => {
             <div className='post-details-footer'>
               <div className='post-details-footer-item'> <FontAwesomeIcon id='post-icons' icon={faComments} /> {post.comments.length} Comments  <FontAwesomeIcon id='post-icons' icon={faShare} />  Share ...</div>
             </div>
-            
             {/* form with a text area asking for user thoughts */}
-           
               <div>
-                
               <div className='post-details-content'>
               <div className='post-details-form'>
               <div className='post-details-form-item'> <textarea onChange={(e) => setComment(e.target.value)} placeholder='What are your thoughts?' /> </div>
@@ -97,11 +86,9 @@ useEffect(() => {
                 </div>
                 </div>    
           </div>
-          
           <div className='community-details'>
         <div className='community-details-header'>
-          <div className='community-details-header-item'> <span>r/{post.community.name}   hehet</span> </div>
-          
+        <div className='community-details-header-item'> <span>r/{post.community.name} </span> </div>
       </div> </div>
      </div>
        </div> : null}

@@ -49,31 +49,31 @@ function App() {
     const res = await axios.post(`http://localhost:3001/comment/${id}`, {
       text: text
     }, {withCredentials: true});
-  }
+  };
 
   // get comments on a post return an array of comments
 const GetComments = async (id) => {
   const res = await axios.get(`http://localhost:3001/comment/${id}`);
   userSetComment(res.data);
-}
+};
   
 
 // like a post
 const LikePost = async (id) => {
   const res = await axios.post(`http://localhost:3001/posts/${id}/like`, {}, {withCredentials: true});
-}
+};
 
 // dislike a post
 const DislikePost = async (id) => {
   const res = await axios.post(`http://localhost:3001/posts/${id}/dislike`, {},  {withCredentials: true});
   console.log(res.data);
-}
+};
 
   const UserSettings = async (id) => {
     const res = await axios.get(`http://localhost:3001/user/${id}`);
     console.log(res.data);
     setUserSettings(res);
-  }
+  };
 
 
   const Logout = async () => {
@@ -82,7 +82,7 @@ const DislikePost = async (id) => {
     setLoggedIn(false);
     localStorage.clear();
     setUser([]);
-  }
+  };
 
   
   const GetPosts = async () => {
@@ -91,7 +91,7 @@ const DislikePost = async (id) => {
     setPosts(res);   
     console.log(res);
     setLoading(false);
-  }
+  };
 
   const GetSinglePost = async (id) => {
     setLoading(true)
@@ -100,10 +100,9 @@ const DislikePost = async (id) => {
     console.log(res.data);
     setPost(res.data);
     setLoading(false);
-  }
+  };
 
   const LoginUser = async (username, password) => {
-
     try {
       const res = await axios.post("http://localhost:3001/login", {
         username: username,
@@ -125,8 +124,8 @@ const DislikePost = async (id) => {
     } catch(e) {
       console.log(e)
     }
-    
-  }
+  };
+
 
   const CreateUser = async (email, username, password) => {
     try {
@@ -147,9 +146,7 @@ const DislikePost = async (id) => {
       console.log(e)
       setValidation(e.response.data);
     }
-   
-    
-  }
+  };
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("imjordRedditLoggedIn");

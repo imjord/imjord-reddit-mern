@@ -1,9 +1,8 @@
 .postPage-container{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     margin: 20px;
-    border: 1px solid white;
+    border: 2px solid white;
 
 }
 .title-postPage{
@@ -22,17 +21,33 @@ hr {
 
 .post-form
 {
-    border: 2px solid white;
-    padding: 20px;
-    margin: 20px;
+    padding: 30px;
+    margin: 30px;
     display: flex;
+    
     flex-direction: column;
+}
+
+select {
+    background-color: rgb(57, 57, 57);
+    color: #7b7d7e;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100%;
+    margin: 10px;
+}
+
+option {
+    padding: 30px;
 }
 
 .post-form-control {
     background-color: rgb(57, 57, 57);
     color: #7b7d7e;
     border-radius: 20px;
+    padding: 20px;
+    margin: 10px;
+    width: 100%;
 }
 
 .input-margin {
@@ -41,4 +56,48 @@ hr {
 
 #text {
     height: 100px;
+}
+
+textarea {
+    resize: none;
+}
+
+.post-btn {
+    background-color: #7b7d7e;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.right {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.rules {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.ruleList {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    flex-direction: row;
+    text-decoration: none;
+    margin: 15px;
+    padding: 10px;
+    border: 2px solid white;
+    color: #7b7d7e;
+    border-radius: 10px;
+}
+
+.ruleList li {
+    list-style: none !important;
 }
