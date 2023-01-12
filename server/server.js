@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const passport = require('passport');
 const MongoStore = require('connect-mongo');
+const path = require('path');
 
 require('./config/passport')(passport);
 
@@ -46,6 +47,13 @@ app.use("/", PostRoutes);
 app.use('/', CommentRoutes);
 app.use('/', UserRoutes);
 app.use('/', CommunityRoutes);
+
+app.use(express.static(path.join(__dirname, '../client/build')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+}
+
+);
 
 // db and server
 mongoDB.once('open', () => {
