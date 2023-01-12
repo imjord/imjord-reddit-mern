@@ -17,11 +17,11 @@ const CommunityController = {
 
         const user = await User.findOne({username: req.session.user}).then(results => {
                 const id = results._id;
-                console.log(id);
+                 
                 return id;
             }
         ).catch(err => {
-            console.log(err);
+             
         
         })
 
@@ -33,11 +33,11 @@ const CommunityController = {
 
         await community.save().then(
             results => {
-                console.log(results);
+                 
                 res.json({ message: "Community Created"});
             }
         ).catch(err => {
-            console.log(err, "error");
+             
 
 
         })
@@ -47,16 +47,16 @@ const CommunityController = {
         // find the user id
         const user = await User.findOne({username: req.session.user}).then(results => {
                 const id = results._id;
-                console.log(id);
+                 
                 return id;
             }
         ).catch(err => {
-            console.log(err);
+             
         
         
         }
         )
-        console.log(user);
+         
 
         // push the user id into the community users array
 
@@ -66,11 +66,11 @@ const CommunityController = {
             results.save().then(results => {
                 res.json({message: `Joined ${results.name}`});
             }).catch(err => {
-                console.log(err);
+                 
             })
         }
         ).catch(err => {
-            console.log(err);
+             
         }
         )
     },

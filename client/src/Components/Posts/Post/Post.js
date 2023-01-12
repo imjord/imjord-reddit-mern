@@ -24,7 +24,7 @@ useEffect(() => {
   // if post id is not null, get comments
   if(post._id) {
     GetComments(post._id);
-    console.log(userComment)
+     
   } else {
     // if post id is null do nothing
     return;

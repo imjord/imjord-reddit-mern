@@ -11,9 +11,9 @@ const PostController = {
         
         Post.find().populate("community").populate("comments").then(results => {
             res.json(results);
-            console.log(req.session);
+             
         }).catch(err => {
-            console.log(err)
+             
         })
     },
     // get a post by id 
@@ -21,7 +21,7 @@ const PostController = {
         Post.findById({_id: req.params.id}).populate("comments").populate("community").then(results => {
             res.json(results)
         }).catch(err => {
-            console.log(err)
+             
         })
     },
     // make a post 
@@ -40,19 +40,19 @@ const PostController = {
 
         // add the post to the users posts array
         const user = User.findOne({username: req.session.user}).then(results => {
-            console.log(results);
+             
             results.posts.push(newPost);
             results.save();
 
         }).catch(err => {
-            console.log(err);
+             
         })
         // add the post to the community posts array
         const community = Community.findById({_id: req.body.communityId}).then(results => {
             results.posts.push(newPost);
             results.save();
         }).catch(err => {
-            console.log(err);
+             
         })
         
     //   need validation 
@@ -61,7 +61,7 @@ const PostController = {
                 res.json({message: "Post created"});
             }
         ).catch(err => {
-            console.log(err);
+             
         })
     },
     // a user can like a post
@@ -71,13 +71,13 @@ const PostController = {
             post.save().then(
                 results => {
                     res.json({message: "Post liked"});
-                    console.log(post.likes);
+                     
                 }
             ).catch(err => {
-                console.log(err);
+                 
             })
         }).catch(err => {
-            console.log(err);
+             
         })
     }, 
 
@@ -88,14 +88,14 @@ const PostController = {
             post.save().then(
                 results => {
                     res.json({message: "Post disliked"});
-                    // console log the likes 
-                    console.log(post.likes);
+                    //  
+                     
                 }
             ).catch(err => {
-                console.log(err);
+                 
             })
         }).catch(err => {
-            console.log(err);
+             
         })
     }
 

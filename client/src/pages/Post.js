@@ -12,7 +12,7 @@ const Post = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(title, content, community);
+         
         CreatePost(title, content, community);
         setTitle("");
         setContent("");

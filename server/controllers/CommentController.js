@@ -42,11 +42,11 @@ const User = require('../models/User');
 
             post.save().then(
                 results => {
-                    console.log(results);
+                     
                     res.json({ message: "Comment Created"});
                 }
             ).catch(err => {
-                console.log(err, "error");
+                 
             })
         }
     

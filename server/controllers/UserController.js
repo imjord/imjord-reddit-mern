@@ -7,9 +7,9 @@ const UserController = {
     getUsers(req, res){
         User.find().then(response => {
             res.json(response);
-            console.log(req.session)
+             
         }).catch(err => {
-            console.log(err);
+             
         });
     },
     // create a new user
@@ -48,7 +48,7 @@ const UserController = {
                 
                 
             }).catch(err => {
-                console.log(err);
+                 
             });
         }
         
@@ -56,7 +56,7 @@ const UserController = {
     loginUser(req,res, next){
         passport.authenticate('local', (err, user, info) => {
             if(err){
-                console.log(err);
+                 
             }
             if(user){
                 req.session.user = user.username
@@ -75,7 +75,7 @@ const UserController = {
         
         req.session.destroy((err) => {
             if(err){
-                console.log(err);
+                 
             } else {
                 res.clearCookie('connect.sid').json({message: 'logout complete'});
             }
@@ -87,7 +87,7 @@ const UserController = {
         User.findById(req.params.id).then(response => {
             res.json(response);
         }).catch(err => {
-            console.log(err);
+             
         });
     },
     // get user and populate their comments
@@ -95,7 +95,7 @@ const UserController = {
         User.findById(req.params.id).populate('comments').then(response => {
             res.json(response);
         }).catch(err => {
-            console.log(err);
+             
         });
     },
     // get user and populate their posts
@@ -103,7 +103,7 @@ const UserController = {
         User.findById(req.params.id).populate('posts').then(response => {
             res.json(response);
         }).catch(err => {
-            console.log(err);
+             
         });
     },
 };

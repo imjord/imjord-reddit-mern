@@ -41,7 +41,7 @@ function App() {
       content: content,
       community: community
     }, {withCredentials: true});
-    console.log(res.data);
+     
   };
 
   // create a comment on a post dont return anything
@@ -66,12 +66,12 @@ const LikePost = async (id) => {
 // dislike a post
 const DislikePost = async (id) => {
   const res = await axios.post(`http://localhost:3001/posts/${id}/dislike`, {},  {withCredentials: true});
-  console.log(res.data);
+   
 };
 
   const UserSettings = async (id) => {
     const res = await axios.get(`http://localhost:3001/user/${id}`);
-    console.log(res.data);
+     
     setUserSettings(res);
   };
 
@@ -89,7 +89,7 @@ const DislikePost = async (id) => {
     setLoading(true)
     const res = await axios.get('http://localhost:3001/posts');
     setPosts(res);   
-    console.log(res);
+     
     setLoading(false);
   };
 
@@ -97,7 +97,7 @@ const DislikePost = async (id) => {
     setLoading(true)
     setPostModal(true);
     const res = await axios.get(`http://localhost:3001/posts/${id}`);
-    console.log(res.data);
+     
     setPost(res.data);
     setLoading(false);
   };
@@ -108,7 +108,7 @@ const DislikePost = async (id) => {
         username: username,
         password: password
     }, {withCredentials: true});
-    console.log(res);
+     
       if(res.data.message == 'User Not Found'){
         setMsg(res.data.message);
       } else {
@@ -117,12 +117,12 @@ const DislikePost = async (id) => {
       setLoggedIn(true);
       setMsg(res.data.message);
       setUser(res.data.user);
-      console.log(user)
+       
 
       // setNavigate(true);
       }
     } catch(e) {
-      console.log(e)
+       
     }
   };
 
@@ -143,7 +143,7 @@ const DislikePost = async (id) => {
       setMsg(res.data.message);
       setValidation("");
     } catch (e){
-      console.log(e)
+       
       setValidation(e.response.data);
     }
   };
@@ -152,7 +152,7 @@ const DislikePost = async (id) => {
     const loggedInUser = localStorage.getItem("imjordRedditLoggedIn");
     if(loggedInUser){
       setUser(loggedInUser);
-      console.log(user)
+       
     }  
     GetPosts();
     

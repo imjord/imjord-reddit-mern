@@ -49,9 +49,9 @@ app.use('/', CommunityRoutes);
 
 // db and server
 mongoDB.once('open', () => {
-    console.log('mongodb connection established');
+     
     app.listen(PORT, () => {
-        console.log(`LISTENING ON ${PORT} BEEP`)
+         console.log(`Server is running on port ${PORT}`);
     })
 })
 

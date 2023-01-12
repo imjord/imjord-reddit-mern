@@ -126,7 +126,7 @@ const NavBar = (props) => {
                   </div>
                   <div className='modal-form'>
                     <form>
-                      <input placeholder='Email' for="email" name='email' type="email" onChange={(e) => setEmail(e.target.value)} />
+                      <input placeholder='Email' htmlFor="email" name='email' type="email" onChange={(e) => setEmail(e.target.value)} />
                       
                     </form>
                     <button className='button-div-modal' onClick={() => setContinueSignup(true)}>Continue</button> 
@@ -155,8 +155,8 @@ const NavBar = (props) => {
                 })} </ul> : null}
                 <div className='modal-form'>
                   <form>
-                    <input placeholder='Username' for="username" name='username' type="username" onChange={(e) => setUsername(e.target.value)} />
-                    <input placeholder='Password' for="password" name='password' type="password" onChange={(e) => setPassword(e.target.value)} />
+                    <input placeholder='Username' htmlFor="username" name='username' type="username" onChange={(e) => setUsername(e.target.value)} />
+                    <input placeholder='Password' htmlFor="password" name='password' type="password" onChange={(e) => setPassword(e.target.value)} />
                     <div className='button-div-modal'> <button id='user-btn' type='submit' onClick={handleSubmit}>Continue</button> </div>
 
                   </form>
@@ -180,8 +180,8 @@ const NavBar = (props) => {
                  {msg == "User Logged In" ? <div className='success-msg'> {msg} </div> : null}
                 <div className='modal-form'>
                   <form>
-                  <input placeholder='Username' for="username" name='username' type="username" onChange={(e) => setUsername(e.target.value)} />
-                    <input placeholder='Password' for="password" name='password' type="password" onChange={(e) => setPassword(e.target.value)} />
+                  <input placeholder='Username' htmlFor="username" name='username' type="username" onChange={(e) => setUsername(e.target.value)} />
+                    <input placeholder='Password' htmlFor="password" name='password' type="password" onChange={(e) => setPassword(e.target.value)} />
                   </form>
                   <div className='button-div-modal'> <button onClick={handleLogin} >Log In</button> </div>
                 </div>

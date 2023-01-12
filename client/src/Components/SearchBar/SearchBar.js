@@ -7,7 +7,7 @@ const SearchBar = () => {
   return (
     <div className='searchbar'>
        
-        <input spellcheck="false" placeholder="  Search ImJord Reddit..."></input>
+        <input spellCheck="false" placeholder="  Search ImJord Reddit..."></input>
         <span className='mysearchicon'><FontAwesomeIcon icon={faMagnifyingGlass} /> </span>
     </div>
   )
