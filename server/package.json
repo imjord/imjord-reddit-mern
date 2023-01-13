@@ -16,8 +16,9 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "cd client && npm run build",
-    "dev": "nodemon node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "build": "cd client && npm run build"
   },
   "name": "server",
   "version": "1.0.0",

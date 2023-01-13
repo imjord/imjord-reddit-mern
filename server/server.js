@@ -11,6 +11,9 @@ const cors = require('cors');
 const passport = require('passport');
 const MongoStore = require('connect-mongo');
 const path = require('path');
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 require('./config/passport')(passport);
 
