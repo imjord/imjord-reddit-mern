@@ -14,7 +14,7 @@ const path = require('path');
 const dotenv = require("dotenv");
 
 dotenv.config();
-
+// fixes
 require('./config/passport')(passport);
 
 const session = require('express-session');
