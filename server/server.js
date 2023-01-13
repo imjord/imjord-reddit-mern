@@ -36,7 +36,7 @@ app.use(session({
     saveUninitialized: true,
     store: MongoStore.create({
         collectionName: 'sessions',
-        mongoUrl: "mongodb://127.0.0.1:27017/imjordreddit"
+        mongoUrl: process.env.MONGODB_URI
     }),
     cookie: { maxAge: 1000 * 60 *60 *24, secure: false }
 }));
@@ -54,9 +54,7 @@ app.use('/', CommunityRoutes);
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
-}
-
-);
+});
 
 // db and server
 mongoDB.once('open', () => {
