@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import UserPage from './pages/UserPage';
 import Post from './pages/Post';
+import Community from './pages/Community';
 
 
 function App() {
@@ -32,6 +33,14 @@ function App() {
   const GetCommunties = async () => {
     const res = await axios.get('http://localhost:3001/community');
     setCommunties(res.data);
+  };
+
+  // create a community
+  const CreateCommunity = async (name, description) => {
+    const res = await axios.post('http://localhost:3001/community', {
+      name: name,
+      description: description
+    }, {withCredentials: true});
   };
 
   // create a post 
@@ -165,6 +174,7 @@ const DislikePost = async (id) => {
     <Routes>
       <Route path="/" element={<Home  DislikePost={DislikePost} LikePost={LikePost} userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
       <Route path="/user/:id" element={<UserPage />} />
+      <Route path="/createcommunity" element={<Community CreateCommunity={CreateCommunity} />} />
       <Route path="/submit" element={<Post CreatePost={CreatePost} communties={communties} GetCommunties={GetCommunties} user={user}/>} />
       <Route path="*" element={<h1>404</h1>} />
      
