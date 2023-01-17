@@ -45,24 +45,27 @@ const CommunityController = {
     // join a community
     async JoinCommunity(req,res){
         // find the user id
-        const user = await User.findOne({username: req.session.user}).then(results => {
-                const id = results._id;
-                 
-                return id;
+        const userID = await User.findOne({username: req.session.user}).then(results => {
+                return results;
             }
         ).catch(err => {
              
-        
+        console.log(err);
         
         }
         )
          
+        const communityId = req.params.id;
+
 
         // push the user id into the community users array
 
 
-        const community = await Community.findById({_id: req.params.id}).then(results => {
-            results.users.push(user);
+        const community = await Community.findById({_id: communityId}).then(results => {
+        // push the community id into the user communities array
+            userID.communities.push(results._id);
+            userID.save();
+            results.users.push(userID._id);
             results.save().then(results => {
                 res.json({message: `Joined ${results.name}`});
             }).catch(err => {

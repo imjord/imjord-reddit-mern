@@ -19,6 +19,12 @@ const UserSchema = new Schema({
         type: String, 
         required: true
     },
+    communities: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Community'
+        }
+    ],
     comments: [
         {
             type: Schema.Types.ObjectId,

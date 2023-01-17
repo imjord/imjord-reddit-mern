@@ -90,6 +90,17 @@ const UserController = {
              
         });
     },
+    // get user by username and populate their comments, posts, and communities
+    getUserByUsername(req, res){
+        User.findOne({username: req.body.username}).populate("comments").populate("posts").populate("communities").then(response => {
+            if(!response){
+                res.json({message: "User Not Found"});
+            }
+           res.json({message: "User Found", user: response});
+        }).catch(err => {
+            console.log(err);
+        });
+    },
     // get user and populate their comments
     getUserComments(req, res){
         User.findById(req.params.id).populate('comments').then(response => {

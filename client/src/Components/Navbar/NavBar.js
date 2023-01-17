@@ -6,7 +6,7 @@ import { faUser, faPlus, faGear, faUserTie, faCaretDown, faRobot, faXmark, faMoo
 import './Nav.css';
 
 const NavBar = (props) => {
-  const {UserSettings, setValidation, validation, CreateUser, setMsg, loggedIn, setLoggedIn, LoginUser, msg, user, Logout} = props;
+  const {setValidation, validation, CreateUser, setMsg, loggedIn, setLoggedIn, LoginUser, msg, user, Logout} = props;
   const [isOpen, setIsOpen] = useState(false);
   const [sign, setSign] = useState(false);
   const [log, setLog] = useState(false);
@@ -74,12 +74,12 @@ const NavBar = (props) => {
                 <div className='user-option-container'> <Link id='link' to={"/createcommunity"}> <FontAwesomeIcon icon={faPlus} id="post-icon" /> </Link> </div>
               <div className='user-container'>
                 <div className="user-inner">
-                <div className='user-icon'><FontAwesomeIcon icon={faUserTie} id="user-icon" /> </div>
+                <div className='user-icon'><Link id='link' to={"/profile"}> <FontAwesomeIcon icon={faUserTie}  id="user-icon" /> </Link> </div>
                 <div className='username'> {user} </div>
                 <div onClick={toggleUserDropDown} className='user-icon' ><FontAwesomeIcon   icon={faCaretDown} id="user-icon" /> </div>
                 {userDropDown ? <div className='dropdown-container'>
               <div className='mode'>  <FontAwesomeIcon icon={faMoon}  /> Dark Mode  </div>
-              <div onClick={UserSettings(user._id)}> <FontAwesomeIcon icon={faGear}/>  Settings </div>
+              <div> <FontAwesomeIcon icon={faGear}/>  Settings </div>
               <hr/>
               <div  onClick={Logout}><FontAwesomeIcon icon={faDoorOpen}/> Logout </div>
               </div> : null}

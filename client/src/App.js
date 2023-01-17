@@ -8,7 +8,7 @@ import Spinner from './Components/Spinner/Spinner';
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import UserPage from './pages/UserPage';
+import Profile from './pages/Profile';
 import Post from './pages/Post';
 import Community from './pages/Community';
 
@@ -22,7 +22,6 @@ function App() {
   const [signUp, setSignUp] = useState(false);
   const [msg, setMsg] = useState("");
   const [validation, setValidation] = useState([]);
-  const [userSettings, setUserSettings] = useState({});
   const [postModal, setPostModal] = useState(false);
   const [userComment, userSetComment] = useState([{}]);
   const [communties, setCommunties] = useState([{}]);
@@ -78,11 +77,7 @@ const DislikePost = async (id) => {
    
 };
 
-  const UserSettings = async (id) => {
-    const res = await axios.get(`http://localhost:3001/user/${id}`);
-     
-    setUserSettings(res);
-  };
+  
 
 
   const Logout = async () => {
@@ -124,6 +119,7 @@ const DislikePost = async (id) => {
       // set logged in to local storage
       localStorage.setItem("imjordRedditLoggedIn", res.data.user);
       setLoggedIn(true);
+      console.log(res.data);
       setMsg(res.data.message);
       setUser(res.data.user);
        
@@ -170,12 +166,13 @@ const DislikePost = async (id) => {
 
   return (
    <BrowserRouter>
-    <NavBar  UserSettings={UserSettings} setValidation={setValidation} validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
+    <NavBar   setValidation={setValidation} validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
     <Routes>
       <Route path="/" element={<Home  DislikePost={DislikePost} LikePost={LikePost} userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
-      <Route path="/user/:id" element={<UserPage />} />
       <Route path="/createcommunity" element={<Community CreateCommunity={CreateCommunity} />} />
       <Route path="/submit" element={<Post CreatePost={CreatePost} communties={communties} GetCommunties={GetCommunties} user={user}/>} />
+      {/* <Route path="/community/:id" element={<CommunityPage />} /> */}
+      <Route path="/profile" element={<Profile user={user}/>} />
       <Route path="*" element={<h1>404</h1>} />
      
     </Routes>
