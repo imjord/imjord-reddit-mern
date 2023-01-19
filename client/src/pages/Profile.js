@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import Communties from '../Components/Communites/Communties';
 import './Profile.css';
 
 const Profile = (props) => {
-    const {user} = props;
+    const {user, setUser} = props;
     const [userSettings, setUserSettings] = useState({});
 
     const UserSettings =  () => {
@@ -12,14 +13,18 @@ const Profile = (props) => {
         }, {withCredentials: true})
         .then(res => {
             setUserSettings(res.data.user)
-        });
+          });
      };
      useEffect(() => {
         UserSettings();
      }, [])
     return (
+       
         <div className="profile-container">
+             {user.length > 0 ? 
+             <div> 
             <div className="left">
+                
                 <div className="title-postPage">Profile</div>
                 <div className="profile">
                     <div className="profile-img">
@@ -32,18 +37,12 @@ const Profile = (props) => {
                 </div>
             </div>
             <div className="right">
-                {/* your communties */}
-                <div className="title-postPage">Your Communities</div>
-                <div className="communities">
-
-                    
-                    {/* map over communties */}
-                    {userSettings.communities ? userSettings.communities.map(community => {
-                        <div> {community.name} </div>
-                    }) : null}
-                        </div>
-                    </div>
+                <Communties user={user} />
+                </div>
+            
+                </div>: <p>you must be logged in to see this page</p>}
         </div>
+        
     );
 }
 

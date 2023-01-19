@@ -4,7 +4,7 @@ import React, {useState} from "react";
 
 
 const Community = (props) => {
-    const {CreateCommunity} = props;
+    const {CreateCommunity, user} = props;
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
 
@@ -18,7 +18,8 @@ const Community = (props) => {
 
     return (
         // create a left side with a form to create a community.
-        <div className="postPage-container">
+         <div  className="postPage-container">
+            {user.length > 0 ? 
              <div className="left">
             <div className="title-postPage"> Create a Community </div>
             <div className="post-form">
@@ -36,7 +37,8 @@ const Community = (props) => {
                 
             </div>
             </div>
-        </div>
+            : <p> You must be logged in to create a community </p>}
+        </div> 
     );
     };
 

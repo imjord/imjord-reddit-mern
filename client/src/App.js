@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Post from './pages/Post';
 import Community from './pages/Community';
+import Communities from './pages/Communities';
 
 
 function App() {
@@ -169,10 +170,11 @@ const DislikePost = async (id) => {
     <NavBar   setValidation={setValidation} validation={validation} setMsg={setMsg} Logout={Logout} user={user} CreateUser={CreateUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} LoginUser={LoginUser} msg={msg}  />
     <Routes>
       <Route path="/" element={<Home  DislikePost={DislikePost} LikePost={LikePost} userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
-      <Route path="/createcommunity" element={<Community CreateCommunity={CreateCommunity} />} />
+      <Route path="/createcommunity" element={<Community user={user} CreateCommunity={CreateCommunity} />} />
       <Route path="/submit" element={<Post CreatePost={CreatePost} communties={communties} GetCommunties={GetCommunties} user={user}/>} />
       {/* <Route path="/community/:id" element={<CommunityPage />} /> */}
-      <Route path="/profile" element={<Profile user={user}/>} />
+      <Route path='/communties' element={<Communities GetCommunties={GetCommunties} communties={communties} />} />
+      <Route path="/profile" element={<Profile setUser={setUser} user={user}/>} />
       <Route path="*" element={<h1>404</h1>} />
      
     </Routes>

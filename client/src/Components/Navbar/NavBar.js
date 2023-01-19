@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import SearchBar from '../SearchBar/SearchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
-import { faUser, faPlus, faGear, faUserTie, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faSignsPost, faScroll, faBullhorn, faDoorOpen, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import { faUser,faMugSaucer, faPlus, faGear, faUserTie, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faSignsPost, faScroll, faBullhorn, faDoorOpen, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import './Nav.css';
 
 const NavBar = (props) => {
@@ -70,6 +70,7 @@ const NavBar = (props) => {
           <div className='nav-btn-div'>
               {user.length > 0 ? 
               <div className='logged-user'>
+                <div className='user-option-container'> <Link id='link' to={"/communties"}> <FontAwesomeIcon icon={faMugSaucer} id="post-icon" />Communties</Link> </div>
                 <div className='user-option-container'> <Link id='link' to={"/submit"}> <FontAwesomeIcon icon={faSignsPost} id="post-icon" /> </Link> </div>
                 <div className='user-option-container'> <Link id='link' to={"/createcommunity"}> <FontAwesomeIcon icon={faPlus} id="post-icon" /> </Link> </div>
               <div className='user-container'>
