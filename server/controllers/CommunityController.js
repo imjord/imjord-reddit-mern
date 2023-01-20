@@ -73,7 +73,7 @@ const CommunityController = {
             })
         }
         ).catch(err => {
-             
+             console.log(err);
         }
         )
     },

@@ -43,6 +43,12 @@ function App() {
     }, {withCredentials: true});
   };
 
+  // join a community 
+  const JoinCommunity = async (id) => {
+    const res = await axios.post(`http://localhost:3001/community/join/${id}`, {}, {withCredentials: true});
+    alert(res.data.message);
+  };
+
   // create a post 
   const CreatePost = async (title, content, community) => {
     const res = await axios.post('http://localhost:3001/posts', {
@@ -173,7 +179,7 @@ const DislikePost = async (id) => {
       <Route path="/createcommunity" element={<Community user={user} CreateCommunity={CreateCommunity} />} />
       <Route path="/submit" element={<Post CreatePost={CreatePost} communties={communties} GetCommunties={GetCommunties} user={user}/>} />
       {/* <Route path="/community/:id" element={<CommunityPage />} /> */}
-      <Route path='/communties' element={<Communities GetCommunties={GetCommunties} communties={communties} />} />
+      <Route path='/communties' element={<Communities JoinCommunity={JoinCommunity} GetCommunties={GetCommunties} communties={communties} />} />
       <Route path="/profile" element={<Profile setUser={setUser} user={user}/>} />
       <Route path="*" element={<h1>404</h1>} />
      
