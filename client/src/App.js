@@ -31,13 +31,13 @@ function App() {
 
   // get all communties
   const GetCommunties = async () => {
-    const res = await axios.get('http://localhost:3001/community');
+    const res = await axios.get('/community');
     setCommunties(res.data);
   };
 
   // create a community
   const CreateCommunity = async (name, description) => {
-    const res = await axios.post('http://localhost:3001/community', {
+    const res = await axios.post('/community', {
       name: name,
       description: description
     }, {withCredentials: true});
@@ -45,13 +45,13 @@ function App() {
 
   // join a community 
   const JoinCommunity = async (id) => {
-    const res = await axios.post(`http://localhost:3001/community/join/${id}`, {}, {withCredentials: true});
+    const res = await axios.post(`/community/join/${id}`, {}, {withCredentials: true});
     alert(res.data.message);
   };
 
   // create a post 
   const CreatePost = async (title, content, community) => {
-    const res = await axios.post('http://localhost:3001/posts', {
+    const res = await axios.post('/posts', {
       title: title,
       content: content,
       community: community
@@ -61,26 +61,26 @@ function App() {
 
   // create a comment on a post dont return anything
   const CreateComment = async (id, text) => {
-    const res = await axios.post(`http://localhost:3001/comment/${id}`, {
+    const res = await axios.post(`/comment/${id}`, {
       text: text
     }, {withCredentials: true});
   };
 
   // get comments on a post return an array of comments
 const GetComments = async (id) => {
-  const res = await axios.get(`http://localhost:3001/comment/${id}`);
+  const res = await axios.get(`/comment/${id}`);
   userSetComment(res.data);
 };
   
 
 // like a post
 const LikePost = async (id) => {
-  const res = await axios.post(`http://localhost:3001/posts/${id}/like`, {}, {withCredentials: true});
+  const res = await axios.post(`/posts/${id}/like`, {}, {withCredentials: true});
 };
 
 // dislike a post
 const DislikePost = async (id) => {
-  const res = await axios.post(`http://localhost:3001/posts/${id}/dislike`, {},  {withCredentials: true});
+  const res = await axios.post(`/posts/${id}/dislike`, {},  {withCredentials: true});
    
 };
 
@@ -89,7 +89,7 @@ const DislikePost = async (id) => {
 
   const Logout = async () => {
 
-    const res = await axios.get("http://localhost:3001/logout", {withCredentials: true});
+    const res = await axios.get("/logout", {withCredentials: true});
     setLoggedIn(false);
     localStorage.clear();
     setUser([]);
@@ -98,7 +98,7 @@ const DislikePost = async (id) => {
   
   const GetPosts = async () => {
     setLoading(true)
-    const res = await axios.get('http://localhost:3001/posts');
+    const res = await axios.get('/posts');
     setPosts(res);   
      
     setLoading(false);
@@ -107,7 +107,7 @@ const DislikePost = async (id) => {
   const GetSinglePost = async (id) => {
     setLoading(true)
     setPostModal(true);
-    const res = await axios.get(`http://localhost:3001/posts/${id}`);
+    const res = await axios.get(`/posts/${id}`);
      
     setPost(res.data);
     setLoading(false);
@@ -115,7 +115,7 @@ const DislikePost = async (id) => {
 
   const LoginUser = async (username, password) => {
     try {
-      const res = await axios.post("http://localhost:3001/login", {
+      const res = await axios.post("/login", {
         username: username,
         password: password
     }, {withCredentials: true});
@@ -141,7 +141,7 @@ const DislikePost = async (id) => {
 
   const CreateUser = async (email, username, password) => {
     try {
-      const res = await axios.post("http://localhost:3001/users", {
+      const res = await axios.post("/users", {
         email: email, 
         username: username,
         password: password

@@ -8,7 +8,7 @@ const Profile = (props) => {
     const [userSettings, setUserSettings] = useState({});
 
     const UserSettings =  () => {
-        axios.post("http://localhost:3001/user", {
+        axios.post("/user", {
             username: user
         }, {withCredentials: true})
         .then(res => {
