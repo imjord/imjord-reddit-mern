@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo');
 const path = require('path');
 const dotenv = require("dotenv");
 
+
 dotenv.config();
 // fixes
 require('./config/passport')(passport);
@@ -58,7 +59,6 @@ app.get('*', (req, res) => {
 
 // db and server
 mongoDB.once('open', () => {
-     
     app.listen(PORT, () => {
          console.log(`Server is running on port ${PORT}`);
     })
