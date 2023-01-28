@@ -17,8 +17,9 @@ const Communties = (props) => {
         <div>
             <h1> Communities </h1>
             {communties.map((community) => (
-                <div className='community-list' key={community.id}>
+                <div className='community-list' key={community._id}>
                     <h2>r/{community.name}</h2>
+                    <p>Members Count {community.users.length}</p>
                     <p>{community.description}</p>
                     <button onClick={() => handleJoin(community._id)}>Join</button>
                 </div>

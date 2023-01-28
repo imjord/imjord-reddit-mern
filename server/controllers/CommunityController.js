@@ -62,6 +62,13 @@ const CommunityController = {
 
 
         const community = await Community.findById({_id: communityId}).then(results => {
+
+            // check if the user is already in the community
+            if(results.users.includes(userID._id)){
+                res.json({message: "You are already in this community"});
+                return;
+            }
+
         // push the community id into the user communities array
             userID.communities.push(results._id);
             userID.save();
