@@ -35,10 +35,10 @@ app.use(session({
     secret: 'imjord',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({
-        collectionName: 'sessions',
-        mongoUrl: "mongodb+srv://imjord:imjord123@cluster0.ny1mkzg.mongodb.net/?retryWrites=true&w=majority"
-    }),
+    // store: MongoStore.create({
+    //     collectionName: 'sessions',
+    //     mongoUrl: "mongodb+srv://imjord:imjord123@cluster0.ny1mkzg.mongodb.net/?retryWrites=true&w=majority"
+    // }),
     cookie: { maxAge: 1000 * 60 *60 *24, secure: false }
 }));
 // passport middleware 
