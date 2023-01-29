@@ -126,7 +126,7 @@ const DislikePost = async (id) => {
       // set logged in to local storage
       localStorage.setItem("imjordRedditLoggedIn", res.data.user);
       setLoggedIn(true);
-      console.log(res.data);
+      
       setMsg(res.data.message);
       setUser(res.data.user);
        
