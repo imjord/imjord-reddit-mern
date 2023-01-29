@@ -37,7 +37,7 @@ app.use(session({
     saveUninitialized: true,
     // store: MongoStore.create({
     //     collectionName: 'sessions',
-    //     mongoUrl: "mongodb+srv://imjord:imjord123@cluster0.ny1mkzg.mongodb.net/?retryWrites=true&w=majority"
+    //     mongoUrl: 
     // }),
     cookie: { maxAge: 1000 * 60 *60 *24, secure: false }
 }));
