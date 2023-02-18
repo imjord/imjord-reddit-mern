@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import Post from './pages/Post';
 import Community from './pages/Community';
 import Communities from './pages/Communities';
+import MobilePosts from './pages/MobilePosts';
 
 
 function App() {
@@ -181,6 +182,7 @@ const DislikePost = async (id) => {
       {/* <Route path="/community/:id" element={<CommunityPage />} /> */}
       <Route path='/communties' element={<Communities JoinCommunity={JoinCommunity} GetCommunties={GetCommunties} communties={communties} />} />
       <Route path="/profile" element={<Profile setUser={setUser} user={user}/>} />
+      <Route path="/posts/:id" element={<MobilePosts DislikePost={DislikePost} LikePost={LikePost} userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
       <Route path="*" element={<h1>404</h1>} />
      
     </Routes>

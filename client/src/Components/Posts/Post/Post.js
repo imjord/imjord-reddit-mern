@@ -5,11 +5,14 @@ import { faUpLong, faDownLong, faComments, faShare, faX} from '@fortawesome/free
 import Spinner from '../../Spinner/Spinner'
 import image from './m.png';
 import { formatDate } from '../../../lib/Moment';
+import { Link } from 'react-router-dom'
 
 const Post = (props) => {
+
 const { DislikePost, LikePost, userComment, GetComments, posts, CreateComment, setPostModal, GetSinglePost, post, loading } = props;
 const [toggle, setToggle] = useState(false);
 const [comment, setComment] = useState('');
+
 
 const CloseModal = () => {
   post._id = null;
@@ -32,6 +35,28 @@ useEffect(() => {
 }, [post._id], [userComment])
   return (
       <div className='post-component'>
+        {loading ? <Spinner /> :  <div> {posts.data?.map((item) => {
+        return(
+          <Link className='mobile-link' to={`/posts/${item._id}`}>
+         <div className='post-container-mobile'>
+            <div className='votes-container'>
+              <div>
+                    <FontAwesomeIcon id='post-icons' icon={faUpLong} />
+                    <p>{item.likes ? item.likes : 0}</p>
+                    <FontAwesomeIcon icon={faDownLong} />
+                    </div>
+              </div>
+          <div className='post'>    
+          <div> <span>r/{item.community.name}   </span><span className='user-color'>posted by u/{item.user}  </span> </div>
+          <div> <h3>{item.title} </h3> </div>
+          <div id='post-icons'><FontAwesomeIcon id='post-icons' icon={faComments} /> {item.comments.length} Comments  <FontAwesomeIcon id='post-icons' icon={faShare} />  Share ...</div>
+          </div>
+          
+          </div>
+          </Link>
+        )
+      })}  </div>}
+
         {loading ? <Spinner /> : <div> {posts.data?.map((item) => {
         return(
           <div className='post-container' onClick={() => GetSinglePost(item._id)}>

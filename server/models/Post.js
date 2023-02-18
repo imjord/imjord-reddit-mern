@@ -20,7 +20,7 @@ const PostSchema = new Schema({
     },
     image: {
         type: String,
-        default: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y'
+        default: 'https://images.unsplash.com/photo-1558743941-459179fe00e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
     },
     date: {
         type: Date,

@@ -219,8 +219,8 @@ const NavBar = (props) => {
           {mobileSelections ? <div className='mobile-selection-container'>
             <div className='mobile-selection-inner'>
               <div className='btn-div-mobile'><Link to={"/communties"}><button className='mobile-btn'>Communties</button> </Link></div>
-              <div className='btn-div-mobile'><Link to={"/submit"}><button className='mobile-btn'>New Communtiy</button> </Link></div>
-              <div className='btn-div-mobile'><Link to={"/createcommunity"}> <button className='mobile-btn'>New Post</button></Link></div>
+              <div className='btn-div-mobile'><Link to={"/submit"}><button className='mobile-btn'>New Post</button> </Link></div>
+              <div className='btn-div-mobile'><Link to={"/createcommunity"}> <button className='mobile-btn'>New Community</button></Link></div>
               </div>
               </div> : null}
     </nav>
