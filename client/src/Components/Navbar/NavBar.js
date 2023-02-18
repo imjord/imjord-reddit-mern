@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react'
 import SearchBar from '../SearchBar/SearchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
-import { faUser,faMugSaucer, faPlus, faGear, faUserTie, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faSignsPost, faScroll, faBullhorn, faDoorOpen, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import { faUser,faMugSaucer, faPlus, faBars, faGear, faUserTie, faCaretDown, faRobot, faXmark, faMoon, faQuestion, faSignsPost, faScroll, faBullhorn, faDoorOpen, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import './Nav.css';
-
+import redditLogo from './reddit.svg';
 const NavBar = (props) => {
   const {setValidation, validation, CreateUser, setMsg, loggedIn, setLoggedIn, LoginUser, msg, user, Logout} = props;
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +15,8 @@ const NavBar = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userDropDown, setUserDropDown] = useState(false);
-
+  const [phoneDropDown, setPhoneDropDown] = useState(false);
+  const [mobileSelections, setMobileSelections] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -25,6 +26,7 @@ const NavBar = (props) => {
   const SignUp = () => {
 
     setSign(true);
+    setPhoneDropDown(false);
   }
 
   const CloseModal = () => {
@@ -38,6 +40,8 @@ const NavBar = (props) => {
 
   const LoginModal = () => {
     setLog(true);
+    setPhoneDropDown(false);
+
   }
 
   const handleSubmit = (e) => {
@@ -59,18 +63,28 @@ const NavBar = (props) => {
     setUserDropDown(!userDropDown);
   }
 
+  const mobileDropDown = () => {
+    setPhoneDropDown(!phoneDropDown);
+  }
+
+  const showMobileSelections = () => {
+    setMobileSelections(!mobileSelections);
+  }
+
+
 
 
   return (
     <nav className='nav'>
         <div>
-        <Link to={"/"}> <FontAwesomeIcon icon={faRobot} id="icon" /> </Link>
+        <Link to={"/"}> <img id='logo' src={redditLogo} alt="logo"/></Link>
         </div>
         <SearchBar />
           <div className='nav-btn-div'>
               {user.length > 0 ? 
               <div className='logged-user'>
-                <div className='user-option-container'> <Link id='link' to={"/communties"}> <FontAwesomeIcon icon={faMugSaucer} id="post-icon" />Communties</Link> </div>
+                
+                <div className='user-option-container'> <Link id='link' className='community-link' to={"/communties"}> <FontAwesomeIcon icon={faMugSaucer} id="post-icon" className='coffee' />Communties</Link> </div>
                 <div className='user-option-container'> <Link id='link' to={"/submit"}> <FontAwesomeIcon icon={faSignsPost} id="post-icon" /> </Link> </div>
                 <div className='user-option-container'> <Link id='link' to={"/createcommunity"}> <FontAwesomeIcon icon={faPlus} id="post-icon" /> </Link> </div>
               <div className='user-container'>
@@ -78,6 +92,7 @@ const NavBar = (props) => {
                 <div className='user-icon'><Link id='link' to={"/profile"}> <FontAwesomeIcon icon={faUserTie}  id="user-icon" /> </Link> </div>
                 <div className='username'> {user} </div>
                 <div onClick={toggleUserDropDown} className='user-icon' ><FontAwesomeIcon   icon={faCaretDown} id="user-icon" /> </div>
+                <div className='mobile-bars'> <FontAwesomeIcon icon={faBars} onClick={() => showMobileSelections()}  id="mobile-bars" /> </div>
                 {userDropDown ? <div className='dropdown-container'>
               <div className='mode'>  <FontAwesomeIcon icon={faMoon}  /> Dark Mode  </div>
               <div> <FontAwesomeIcon icon={faGear}/>  Settings </div>
@@ -92,6 +107,7 @@ const NavBar = (props) => {
                  </div> </div>
                : 
               <div className='nav-btn-div'>
+                <FontAwesomeIcon icon={faBars} onClick={() => mobileDropDown()} id="mobile-bars" />
               <div className='inner-nav-btn'>
               <button id='btn-1' onClick={SignUp}>Sign Up</button>
             </div>
@@ -194,6 +210,19 @@ const NavBar = (props) => {
               
                </div> : null }
           </div>
+          {phoneDropDown ? <div className='phone-dropdown-container'>
+            <div className='phone-dropdown-inner'>
+              <div> <button onClick={LoginModal} id='btn-1'>Log in</button> </div>
+              <div> <button onClick={SignUp} id='btn-2'>Sign up</button>   </div>
+              </div>
+            </div> : null}
+          {mobileSelections ? <div className='mobile-selection-container'>
+            <div className='mobile-selection-inner'>
+              <div className='btn-div-mobile'><Link to={"/communties"}><button className='mobile-btn'>Communties</button> </Link></div>
+              <div className='btn-div-mobile'><Link to={"/submit"}><button className='mobile-btn'>New Communtiy</button> </Link></div>
+              <div className='btn-div-mobile'><Link to={"/createcommunity"}> <button className='mobile-btn'>New Post</button></Link></div>
+              </div>
+              </div> : null}
     </nav>
   )
 }

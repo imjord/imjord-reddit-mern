@@ -97,7 +97,17 @@ const PostController = {
         }).catch(err => {
              
         })
-    }
+    },
+
+    // get posts by most likes
+    GetPostsByLikes(req,res){
+        Post.find().sort({likes: -1}).then(results => {
+            res.json(results);
+             
+        }).catch(err => {
+            console.log(err);       
+        })
+    },
 
 }
 

@@ -64,7 +64,7 @@ const Post = (props) => {
                 <ul>
                     <li>Be respectful</li>
                     <li>Be civil</li>
-                    <li> <FontAwesomeIcon icon={faFaceSmile} /> Be kind</li>
+                    <li>Be kind</li>
                     <li>Be helpful</li>
                     <li>Be honest</li>
                     <li>Be funny</li>

@@ -5,3 +5,23 @@
     align-items: center;
     width: 50%;
 }
+
+
+@media screen and (max-width: 600px) {
+    .posts-div {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .posts-div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .posts-div {
+        width: 100%;
+    }
+}

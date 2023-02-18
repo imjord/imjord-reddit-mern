@@ -1,11 +1,23 @@
 .postPage-container{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin: 20px;
-    border: 2px solid white;
+
+}
+.left {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+
 
 }
 .title-postPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     font-size: 30px;
     font-weight: bold;

@@ -175,3 +175,17 @@
     border: 2px solid #c1c1c9;
     color: white;
 }
+
+
+/* media quiers */
+
+@media screen and (max-width: 600px) {
+    .post-component {
+        width: 100%;
+    }
+    .post {
+        margin: 10px;
+        padding: 15px;
+
+    }
+}
