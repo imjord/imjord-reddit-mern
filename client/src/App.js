@@ -27,6 +27,7 @@ function App() {
   const [postModal, setPostModal] = useState(false);
   const [userComment, userSetComment] = useState([{}]);
   const [communties, setCommunties] = useState([{}]);
+  const [myMsg, setMyMsg] = useState("");
   
 
 
@@ -47,7 +48,10 @@ function App() {
   // join a community 
   const JoinCommunity = async (id) => {
     const res = await axios.post(`/community/join/${id}`, {}, {withCredentials: true});
-    alert(res.data.message);
+    setMyMsg(res.data.message);
+    setTimeout(() => {
+      setMyMsg("");
+    }, 3000);
   };
 
   // create a post 
@@ -180,9 +184,9 @@ const DislikePost = async (id) => {
       <Route path="/createcommunity" element={<Community user={user} CreateCommunity={CreateCommunity} />} />
       <Route path="/submit" element={<Post CreatePost={CreatePost} communties={communties} GetCommunties={GetCommunties} user={user}/>} />
       {/* <Route path="/community/:id" element={<CommunityPage />} /> */}
-      <Route path='/communties' element={<Communities JoinCommunity={JoinCommunity} GetCommunties={GetCommunties} communties={communties} />} />
+      <Route path='/communties' element={<Communities setMyMsg={setMyMsg} myMsg={myMsg} JoinCommunity={JoinCommunity} GetCommunties={GetCommunties} communties={communties} />} />
       <Route path="/profile" element={<Profile setUser={setUser} user={user}/>} />
-      <Route path="/posts/:id" element={<MobilePosts DislikePost={DislikePost} LikePost={LikePost} userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
+      <Route path="/posts/:id" element={<MobilePosts DislikePost={DislikePost} user={user} LikePost={LikePost} userComment={userComment} GetComments={GetComments} CreateComment={CreateComment} setPostModal={setPostModal} GetSinglePost={GetSinglePost} post={post}  posts={posts} loading={loading} />} />
       <Route path="*" element={<h1>404</h1>} />
      
     </Routes>

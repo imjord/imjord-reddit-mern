@@ -6,31 +6,42 @@ import {faChartSimple, faAngleDoubleUp, faAngleDoubleDown} from '@fortawesome/fr
 import {formatDate} from '../lib/Moment';
 
 const MobilePosts = (props) => {
-    const {GetSinglePost, post, CreateComment, LikePost, DislikePost} = props;
+    const {GetSinglePost, post, CreateComment, LikePost, DislikePost, user} = props;
     const {id} = useParams();
     const [comment, setComment] = useState('');
-   
+   const  [msg, setMsg] = useState('');
     
     const handleSubmit = (e) => {
-       
+        e.preventDefault();
         CreateComment(post._id, comment);
+        if(user.length > 0) {
 
-      }
+        setMsg('Comment added!');
+        setTimeout(() => {
+            setMsg('');
+        }, 3000);
+        setComment('');
+      } else {
+        setMsg('You must be logged in to comment');
+        setTimeout(() => {
+            setMsg('');
+        }, 3000);
+        }
+    }
 
     useEffect(() => {
         GetSinglePost(id);
+        console.log(post);
     }, []);
 
     return (
         <div className="column-post-container">
         <div className="mobile-post-details">
            <div className="mobile-post-title">
-               <h3>{post.title}</h3><span>{formatDate(post.date)}</span>
+               <h3>r/{post.community?.name} <span className="date">{formatDate(post.date)}</span></h3><span></span> <h7 id="gray">by {post.user}</h7>
                
            </div>
-           <div className="mobile-post-title-user">
-               <h4>By {post.user}</h4>
-           </div>
+           
            <div className="mobile-post-description">
                <p>{post.content}</p>
                </div>
@@ -42,6 +53,8 @@ const MobilePosts = (props) => {
                </div>
             </div>
             <div className="comment-form">
+                {user.length > 0 ? <h4>Logged in as {user.username}</h4> : <h4>Log in to comment</h4>}
+                {msg ? <p>{msg}</p> : null}
                 <form>
                     <div><input onChange={(e) => setComment(e.target.value)} type="text" placeholder="Add a comment..."/> </div>
                     <div><button onClick={handleSubmit}>Post</button>  </div>
@@ -51,7 +64,7 @@ const MobilePosts = (props) => {
                     return (
                         <div className="mobile-post-comments">
                             <div className="mobile-post-comment-user">
-                                <h4>{comment.user}</h4><span>{formatDate(comment.date)}</span>
+                                <h4>{comment.user}</h4><span className="date">{formatDate(comment.date)}</span>
                                 </div>
                             <div className="mobile-post-comment-description">
                                 <p>{comment.text}</p>

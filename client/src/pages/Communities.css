@@ -23,3 +23,19 @@
 .community-list button:hover {
     background-color: #2a2a2a;
 }
+
+/* create an alert that pops up in middle of screen view*/
+.alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3a3a3a;
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    z-index: 100;
+}

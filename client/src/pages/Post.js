@@ -9,14 +9,20 @@ const Post = (props) => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [community, setCommunity] = useState("");
+    const [msg, setMsg] = useState("");
     
     const handleSubmit = (e) => {
         e.preventDefault();
-         
         CreatePost(title, content, community);
+        console.log(title, content, community);
+        setMsg(`Post created successfully!`);
+        setTimeout(() => {
+            setMsg("");
+        }, 5000);
         setTitle("");
         setContent("");
         setCommunity("");
+       
     }
 
 
@@ -30,6 +36,7 @@ const Post = (props) => {
         <div className="left">
         <div className="title-postPage">Create a post </div>
         <hr />
+        {msg ? <p className="msg">{msg}</p> : null}
         <div className="post-form">
             <form onSubmit={handleSubmit}>
                 <div className="form-group">

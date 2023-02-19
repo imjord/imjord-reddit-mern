@@ -7,11 +7,16 @@ const Community = (props) => {
     const {CreateCommunity, user} = props;
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
+    const [msg, setMsg] = useState("");
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         CreateCommunity(name, description);
+        setMsg(`Community created successfully!`);
+        setTimeout(() => {
+            setMsg("");
+        }, 5000);
         setName("");
         setDescription("");
     }
@@ -22,6 +27,8 @@ const Community = (props) => {
             {user.length > 0 ? 
              <div className="left">
             <div className="title-postPage"> Create a Community </div>
+            <hr />
+            {msg ? <p className="msg">{msg}</p> : null}
             <div className="post-form">
                 <form onSubmit={handleSubmit}>
                 <div className="form-group">
