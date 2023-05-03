@@ -1,14 +1,20 @@
-const { GetPosts, CreatePost, GetPostDetails, LikePost, DislikePost, GetPostsByLikes } = require('../controllers/PostController');
-const requireAuth = require('../config/auth');
+const {
+  GetPosts,
+  CreatePost,
+  GetPostDetails,
+  LikePost,
+  DislikePost,
+  GetPostsByLikes,
+} = require("../controllers/PostController");
+const requireAuth = require("../config/auth");
 
-const router = require('express').Router();
+const router = require("express").Router();
 
-router.get('/posts', GetPosts);
-router.get('/posts/getlikes', GetPostsByLikes)
-router.post('/posts', requireAuth, CreatePost);
-router.get('/posts/:id', GetPostDetails);
-router.post('/posts/:id/like', requireAuth, LikePost);
-router.post('/posts/:id/dislike', requireAuth, DislikePost);
-
+router.get("/api/posts", GetPosts);
+router.get("/api/posts/getlikes", GetPostsByLikes);
+router.post("/api/posts", requireAuth, CreatePost);
+router.get("/api/posts/:id", GetPostDetails);
+router.post("/api/posts/:id/like", requireAuth, LikePost);
+router.post("/api/posts/:id/dislike", requireAuth, DislikePost);
 
 module.exports = router;

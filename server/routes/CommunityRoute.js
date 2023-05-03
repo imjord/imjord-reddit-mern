@@ -1,14 +1,14 @@
-const { GetCommunities, CreateCommunity, JoinCommunity } = require('../controllers/CommunityController');
-const requireAuth = require('../config/auth');
+const {
+  GetCommunities,
+  CreateCommunity,
+  JoinCommunity,
+} = require("../controllers/CommunityController");
+const requireAuth = require("../config/auth");
 
-const router = require('express').Router();
+const router = require("express").Router();
 
-
-router.get('/community', GetCommunities);
-router.post('/community', requireAuth, CreateCommunity);
-router.post('/community/join/:id', requireAuth, JoinCommunity);
-
-
-
+router.get("/api/community", GetCommunities);
+router.post("/api/community", requireAuth, CreateCommunity);
+router.post("/api/community/join/:id", requireAuth, JoinCommunity);
 
 module.exports = router;
